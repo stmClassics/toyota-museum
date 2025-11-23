@@ -1,1 +1,7 @@
-[] 
+{
+  "imageBase": "/images/news/",
+  "entries": [
+    "2025-11-neues-logo.txt",
+    "20260101-neue-website.txt"
+  ]
+}

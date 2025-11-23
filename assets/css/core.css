@@ -17,6 +17,10 @@ body {
   background: var(--bg);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Layout */
 .container { max-width: var(--container); margin: 0 auto; padding: 0 16px; }
 .container.narrow { max-width: 760px; }
@@ -33,9 +37,28 @@ p { margin: 0 0 1em; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* Header / Nav */
-.site-header { position: sticky; top: 0; background: #fff; border-bottom: 1px solid var(--border); z-index: 10; }
-.site-header .container { display: flex; align-items: center; height: 60px; }
+/* Sticky Header / Nav */
+/* Wrapper klebt am Viewport */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* Optik des Headers selbst */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.2s ease;
+}
+.site-header .container { 
+  display: flex; 
+  align-items: center; 
+  height: 60px; 
+}
+.site-header.scrolled {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
 .brand { font-weight: 700; margin-right: auto; color: inherit; }
 .nav a { margin-left: 16px; color: #333; }
 .nav a:hover { color: var(--accent); }
@@ -55,6 +78,28 @@ a:hover { text-decoration: underline; }
   border-radius: 12px;
   padding: 16px;
   background: #fff;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+/* Einheitliche Bildbox (Auto-Crop → 16:9) */
+.card .thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eee;
+}
+/* Bild selbst */
+.card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* Schlüssel: zuschneiden */
+  object-position: center;
+  display: block;
 }
 
 /* KPIs */

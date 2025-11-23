@@ -1,0 +1,6 @@
+title: Toyota Celica RA28 Liftback
+year: 1977
+summary: Der legendäre „Baby Mustang“ – sportlich, ikonisch, zeitlos.
+images: celica-ra28/front.jpg, celica-ra28/side.jpg, celica-ra28/rear.jpg
+---
+Dieser Celica RA28 ist eines der Highlights im Toyota Museum. Das Modell ist besonders wegen seiner Fastback-Form beliebt, die dem amerikanischen Ford Mustang nachempfunden ist.

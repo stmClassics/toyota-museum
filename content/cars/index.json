@@ -1,0 +1,8 @@
+{
+  "imageBase": "/images/cars/",
+  "entries": [
+    "celica-ra28.txt",
+    "rav4-xa10-breit.txt",
+    "celica-ma61.txt"
+  ]
+}

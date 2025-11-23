@@ -1,0 +1,9 @@
+title: Toyota Supra MK2 (MA61)
+year: 1982
+summary: Die zweite Supra-Generation präsentierte sich als ausgereiftes Sportcoupé mit dem 2,8-Liter-DOHC-Reihensechszylinder 5M-GE und zahlreichen eigenständigen Design- und Technikmerkmalen.
+images: supra-ma61/front.jpg,supra-ma61/side.jpg,supra-ma61/rear.jpg
+
+---
+
+Die Supra wird erwachsen – vom Sportcoupé zum ernsthaften Performance-Car. 
+1982 präsentierte Toyota die zweite Generation der Supra, intern als MK2 oder A60 bekannt. Unter der Haube arbeitete nun ein 2,8-Liter-Reihensechszylinder mit Doppel-Nockenwelle (5M-GE). Mit 145 PS war dieses Aggregat damals ein klares Statement und machte die Supra zum neuen sportlichen Spitzenmodell der Marke. Wie beim Vorgänger basierte die Supra technisch auf der Celica, erhielt aber zahlreiche eigenständige Elemente, um sich klar zu unterscheiden. Besonders markant war die Frontpartie mit versenkbaren Klappscheinwerfern, der langen Motorhaube mit Powerbulge sowie dem schmalen Kühlergrill mit integrierten Zusatzscheinwerfern. Weitere Erkennungsmerkmale waren ausgestellte Radläufe, ein Dachspoiler und charakteristische Zweifarben-Lackierungen. Technisch bot die MK2-Supra vier Scheibenbremsen und eine hintere Einzelradaufhängung – später auch bei der Celica GT-S verfügbar. Die gelungene Kombination aus Design und Technik brachte der Supra des Modelljahres 1982 sogar den Titel «Motor Trend Import Car of the Year» ein. 
