@@ -1,0 +1,11 @@
+title: Toyota Frühlingstreffen JPR
+date: 2026-04-27
+end: 2026-04-27
+location: Areal XY, 7000 Chur
+organizer: JPR Toyota Club
+type: Treffen
+link: https://jpr-toyota.ch/treffen
+---
+Gemütliches Frühlingstreffen für alle Toyota-Fans. 
+Freies Kommen und Gehen, Foodtrucks vor Ort. 
+Bitte Anmeldung direkt beim Veranstalter.

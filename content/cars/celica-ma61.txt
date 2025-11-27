@@ -1,7 +1,7 @@
 title: Toyota Supra MK2 (MA61)
 year: 1982
 summary: Die zweite Supra-Generation präsentierte sich als ausgereiftes Sportcoupé mit dem 2,8-Liter-DOHC-Reihensechszylinder 5M-GE und zahlreichen eigenständigen Design- und Technikmerkmalen.
-images: supra-ma61/front.jpg,supra-ma61/side.jpg,supra-ma61/rear.jpg
+images: supra-ma61/front.jpg,supra-ma61/side.jpg,supra-ma61/rear.jpg,supra-ma61/fred.jpg
 
 ---
 

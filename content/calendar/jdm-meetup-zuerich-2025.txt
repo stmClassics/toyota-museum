@@ -1,0 +1,11 @@
+title: JDM-Meetup-Zürich
+date: 2026-09-27
+end: 2026-09-27
+location: Areal XY, 8050 Zürich
+organizer: JDM Car Club
+type: Treffen
+link: https://jdm-car.ch/treffen
+---
+Gemütliches Herbststreffen für alle JDM-Fans. 
+Freies Kommen und Gehen, Foodtrucks vor Ort. 
+Bitte Anmeldung direkt beim Veranstalter.

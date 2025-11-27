@@ -54,12 +54,28 @@ a:hover { text-decoration: underline; }
   display: flex; 
   align-items: center; 
   height: 60px; 
+  justify-content: space-between;   /* WICHTIG */
 }
 .site-header.scrolled {
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
-.brand { font-weight: 700; margin-right: auto; color: inherit; }
+/* Brand Container */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;             /* Abstand zwischen Logo & Text */
+  text-decoration: none;   /* kein Unterstrich */
+  color: inherit;          /* Textfarbe vom Header übernehmen */
+}
+
+/* Logo */
+.brand-logo {
+  height: 46px;            /* Logo-Grösse */
+  width: auto;
+  display: block;
+}
+
 .nav a { margin-left: 16px; color: #333; }
 .nav a:hover { color: var(--accent); }
 
@@ -125,4 +141,33 @@ a:hover { text-decoration: underline; }
 @media (max-width: 640px) {
   .hero { padding: 72px 0 48px; }
   .kpis { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Auto-Divider zwischen About und KPIs */
+.divider-car {
+  position: relative;
+  padding: 0.5rem 0 1rem;        /* Luft über und unter dem Auto */
+  background: #fff;
+  text-align: center;
+}
+
+.divider-car img {
+  width: 800px;
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.18));
+  position: relative;
+  z-index: 2;                  /* Auto vor dem grauen Block */
+}
+
+/* KPIs – grauer Block, der sich unter das Auto schiebt */
+.kpi-section {
+  background: #f3f3f3;
+  margin-top: -4rem;           /* grauer Block schiebt sich hoch unter das Auto */
+  padding-top: 2.2rem;           /* Abstand vom Auto zu den Zahlen */
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 1;
 }

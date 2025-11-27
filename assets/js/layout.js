@@ -2,9 +2,8 @@
   const headerEl = document.getElementById("site-header");
   const isIndex = headerEl?.dataset.header === "index";
 
-  const headerUrl = isIndex
-    ? "/partials/index-header.html"
-    : "/partials/header.html";
+  const headerUrl = "/partials/header.html";
+  const footerUrl = "/partials/footer.html"
 
   async function inject(id, url) {
     const el = document.getElementById(id);
@@ -20,7 +19,7 @@
 
   await Promise.all([
     inject("site-header", headerUrl),
-    inject("site-footer", "/partials/footer.html")
+    inject("site-footer", footerUrl)
   ]);
 })();
 

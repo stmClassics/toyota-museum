@@ -22,10 +22,19 @@
       }
 
       container.innerHTML = shown.map(car => {
+        // Bilder splitten
         const images = car.images ? car.images.split(",") : [];
-        const imgTag = images.length
-          ? `<div class="thumb"><img src="${images[0]}" alt="${car.title}" loading="lazy" onerror="this.closest('.thumb').remove()"></div>`
-          : "";
+
+        // Zufälliges Bild wählen
+        let imgTag = "";
+        if (images.length > 0) {
+          const randomImage = images[Math.floor(Math.random() * images.length)];
+          imgTag = `
+            <div class="thumb">
+              <img src="${randomImage.trim()}" alt="${car.title}" loading="lazy"
+                  onerror="this.closest('.thumb').remove()">
+            </div>`;
+        }
 
         return `
           <article class="card">

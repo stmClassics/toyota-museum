@@ -1,0 +1,10 @@
+title: Oldtimer-Messe St. Gallen
+date: 2026-05-16
+end: 2026-05-18
+location: Olma Hallen, St. Gallen
+organizer: Messe St. Gallen
+type: Messe
+link: https://olma-oldtimer.ch
+---
+Grosse Oldtimer-Messe mit Händlern, Clubs und Teilemarkt. 
+Kein offizieller Anlass des Swiss Toyota Museum, aber sehr empfehlenswert.

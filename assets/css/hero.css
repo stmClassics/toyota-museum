@@ -1,0 +1,47 @@
+/* Hero Section */
+
+.hero {
+  width: 100%;
+  min-height: 50vh;              /* Höhe: kannst du auf 60–70vh erhöhen */
+  background: url('/images/hero/main.jpg') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-4); /* Abstand zum nächsten Block */
+}
+
+/* dunkle Overlay-Ebene für bessere Lesbarkeit */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);  /* bei Bedarf heller/dunkler machen */
+}
+
+/* Inhalt im Hero */
+.hero .container {
+  position: relative;  /* damit es über der Overlay-Ebene liegt */
+  color: #fff;
+  text-align: left;    /* oder center, wenn du magst */
+  padding: 3rem 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero .lead {
+  font-size: 1.2rem;
+  color: #fff !important;
+  max-width: 40rem;
+  opacity: 0.95;
+}
+
+.visit-hero {
+  background-image: url('/images/hero/visit.jpg'); /* dein Bild */
+}
+.visit-hero::before {
+  background: rgba(0, 0, 0, 0.15); /* heller als der Standard */
+}

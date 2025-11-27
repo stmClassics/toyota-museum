@@ -1,7 +1,7 @@
 title: Toyota RAV4 XA10 Breitversion
 year: 1996
 summary: Eine seltene, von Delta gefertigte Breitversion mit permanentem Allrad – eines der unterschätzten Fahrfreude-Autos seiner Zeit.
-images: /images/cars/rav4-xa10-breit/front.jpg,/images/cars/rav4-xa10-breit/side.jpg,/images/cars/rav4-xa10-breit/rear.jpg
+images: rav4-xa10-breit/front.jpg,rav4-xa10-breit/side.jpg,rav4-xa10-breit/rear.jpg
 ---
 Der Toyota RAV4 XA10 Breitversion ist ein faszinierendes Stück Automobilgeschichte. Die Verbreiterungen stammen von der Firma *Delta* in Deutschland und wurden nur in kleiner Stückzahl gefertigt. Dadurch wirkt der kompakte RAV4 deutlich muskulöser und steht optisch näher an den Rallye-DNA-Modellen der 90er-Jahre.
 

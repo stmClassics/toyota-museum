@@ -6,7 +6,9 @@
   <title>Toyota Museum – Waltensburg</title>
   <meta name="description" content="Toyota Museum – Klassiker, Geschichten und Community in Waltensburg." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <link rel="stylesheet" href="/assets/css/core.css" />
+  <link rel="stylesheet" href="/assets/css/hero.css" />
 </head>
 <body>
   <div id="site-header" data-header="index"></div>
@@ -28,8 +30,13 @@
       </div>
     </section>
 
-    <!-- KPIs / Zahlen & Fakten (Platzhalter) -->
-    <section class="section muted">
+    <!-- Auto-Divider -->
+    <section class="divider-car">
+      <img src="/images/hero/celica2.png" alt="Toyota Celica" />
+    </section>
+
+    <!-- KPIs / Zahlen & Fakten -->
+    <section class="section kpi-section">
       <div class="container kpis">
         <div class="kpi"><span class="kpi__num">42</span><span class="kpi__label">Fahrzeuge</span></div>
         <div class="kpi"><span class="kpi__num">2019</span><span class="kpi__label">gegründet</span></div>
@@ -37,6 +44,7 @@
         <div class="kpi"><span class="kpi__num">1</span><span class="kpi__label">Kraftwerk</span></div>
       </div>
     </section>
+
 
     <!-- Fahrzeuge Teaser -->
     <section id="cars" class="section">
@@ -50,15 +58,23 @@
       </div>
     </section>
 
-    <!-- Events Teaser (kommt später dynamisch) -->
-    <section id="events" class="section">
+    <!-- Szene Kalender-->
+    <section class="section">
+      <div class="container narrow">
+        <h1>Treffen & Termine</h1>
+        <div id="calendar-list"></div>
+      </div>
+    </section>
+  
+    <!-- Activities Teaser (kommt später dynamisch) -->
+    <section id="activities" class="section">
       <div class="container">
-        <h2>Bevorstehende Events</h2>
-        <div class="grid" id="events-list">
+        <h2>Bevorstehende Aktivitäten</h2>
+        <div class="grid" id="activities-list">
           <!-- Step 2: JS rendert hier Karten -->
-          <article class="card"><h3>Platzhalter</h3><p>Bald folgen Events.</p></article>
+          <article class="card"><h3>Platzhalter</h3><p>Bald folgen Beiträge.</p></article>
         </div>
-        <a class="btn" href="/events.html">Alle Events</a>
+        <a class="btn" href="/activities.html">Alle Aktivitäten</a>
       </div>
     </section>
 
@@ -75,7 +91,7 @@
     </section>
 
     <!-- Besuch / Kontakt -->
-    <section id="visit" class="section">
+    <section id="visit" class="hero visit-hero">>
       <div class="container narrow">
         <h2>Besuch</h2>
         <p>Via Cantunala 1, 7158 Waltensburg • Donnerstag abends Treffen der Freunde des Museums.</p>
@@ -87,7 +103,8 @@
 
   <script src="/assets/js/layout.js"></script>  
   <script src="/assets/js/cms.js"></script>
-  <script src="/assets/js/home-events.js"></script>
+  <script src="/assets/js/calendar.js"></script>  
+  <script src="/assets/js/home-activities.js"></script>
   <script src="/assets/js/home-news.js"></script>
   <script src="/assets/js/home-cars.js"></script>  
   <script src="/assets/js/home.js"></script>  
