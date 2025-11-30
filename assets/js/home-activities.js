@@ -41,13 +41,15 @@
             : dateLabel;
 
         return `
-          <article class="card">
-            ${imgBlock}
-            <h3>${ev.title}</h3>
-            ${dateLabel ? `<div class="muted">${dateRange}</div>` : ""}
-            ${ev.location ? `<div>${ev.location}</div>` : ""}
-            ${ev.summary ? `<p>${ev.summary}</p>` : ""}
-          </article>
+          <a class="card" href="/activities.html">
+            <div class="card__body">
+              ${imgBlock}
+              <h3>${ev.title}</h3>
+              ${dateLabel ? `<div class="muted">${dateRange}</div>` : ""}
+              ${ev.location ? `<div>${ev.location}</div>` : ""}
+              ${ev.summary ? `<p>${ev.summary}</p>` : ""}
+            </div>
+          </a>
         `;
       }).join("");
 

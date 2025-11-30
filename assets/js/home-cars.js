@@ -37,11 +37,13 @@
         }
 
         return `
-          <article class="card">
-            ${imgTag}
-            <h3>${car.title} ${car.year ? `(${car.year})` : ""}</h3>
-            ${car.summary ? `<p>${car.summary}</p>` : ""}
-          </article>
+          <a class="card" href="/cars.html">
+            <div class="card__body">
+              ${imgTag}
+              <h3>${car.title} ${car.year ? `(${car.year})` : ""}</h3>
+              ${car.summary ? `<p>${car.summary}</p>` : ""}
+            </div>
+          </a>
         `;
       }).join("");
     } catch (err) {

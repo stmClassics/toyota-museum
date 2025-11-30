@@ -33,10 +33,7 @@ async function initCalendar() {
 
     // Sehr einfache HTML-Struktur: du kannst das später verfeinern
     const rows = upcoming.map(ev => {
-      const dateStr = ev.end && ev.end > ev.start
-        ? `${ev.date} – ${ev.end}`
-        : ev.date;
-
+      const dateStr = formatDateRange(ev.date, ev.end);
       const location = ev.location || "";
       const organizer = ev.organizer || "";
       const type = ev.type || "";

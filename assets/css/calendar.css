@@ -1,0 +1,81 @@
+/* ------------------------------------------------------------
+   Kalender – Tabelle modernisieren
+------------------------------------------------------------ */
+
+/* Tabelle breiter wirken lassen */
+#calendar table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  line-height: 1.45;
+}
+
+/* Headline row */
+#calendar table thead th {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 0.3px;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+/* Body rows */
+#calendar table tbody td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  color: #444;
+  vertical-align: top;
+}
+
+/* Leichte Alternativzeilen */
+#calendar table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* Hover-Effekt – sehr dezent */
+#calendar table tbody tr:hover {
+  background: #f0f0f0;
+}
+
+/* Datum hervorheben */
+#calendar table td:first-child {
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* Details-Link verbessern */
+#calendar table td a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  padding-left: 4px;
+}
+
+#calendar table td a:hover {
+  text-decoration: underline;
+}
+
+#calendar {
+  background: #fff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+#calendar .container {
+  /*background: #f8f8f8;
+  padding: 2.5rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  border: 1px solid var(--border);*/
+}
+
+#calendar table thead {
+  background: #f3f3f3;
+}
+
+
+

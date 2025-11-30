@@ -1,0 +1,60 @@
+/* ===== VISIT BLOCK ===== */
+
+.visit-block {
+  background: #c40000; /* Toyota-Rot */
+  color: white;
+  padding: 4rem 0;
+}
+
+.visit-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Logo links */
+.visit-logo img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1); /* falls Logo rot ist → wird weiß */
+}
+
+/* Text rechts */
+.visit-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.visit-info p {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.visit-info .label {
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.visit-info a {
+  color: white;
+  text-decoration: underline;
+}
+
+.visit-info a:hover {
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .visit-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .visit-logo img {
+    max-width: 160px;
+  }
+}

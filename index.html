@@ -6,27 +6,22 @@
   <title>Toyota Museum – Waltensburg</title>
   <meta name="description" content="Toyota Museum – Klassiker, Geschichten und Community in Waltensburg." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">  
   
   <link rel="stylesheet" href="/assets/css/core.css" />
   <link rel="stylesheet" href="/assets/css/hero.css" />
+  <link rel="stylesheet" href="/assets/css/calendar.css" />
+  <link rel="stylesheet" href="/assets/css/visit.css" />
 </head>
 <body>
   <div id="site-header" data-header="index"></div>
 
   <main>
     <!-- Hero -->
-    <section class="hero">
+    <section id="home" class="hero">
       <div class="container">
-        <h1>Swiss Toyota Museum</h1>
+        <h1>SWISS TOYOTA MUSEUM</h1>
         <p class="lead">Klassische Toyota – bewahrt, bewegt, erzählt.</p>
-      </div>
-    </section>
-
-    <!-- About (statisch) -->
-    <section id="about" class="section">
-      <div class="container narrow">
-        <h2>Über das Museum</h2>
-        <p>Im ehemaligen Kraftwerk in Waltensburg pflegen wir ikonische Toyota-Modelle und ihre Geschichten.</p>
       </div>
     </section>
 
@@ -38,63 +33,105 @@
     <!-- KPIs / Zahlen & Fakten -->
     <section class="section kpi-section">
       <div class="container kpis">
-        <div class="kpi"><span class="kpi__num">42</span><span class="kpi__label">Fahrzeuge</span></div>
+        <div class="kpi"><span class="kpi__num">85</span><span class="kpi__label">Fahrzeuge</span></div>
         <div class="kpi"><span class="kpi__num">2019</span><span class="kpi__label">gegründet</span></div>
-        <div class="kpi"><span class="kpi__num">12+</span><span class="kpi__label">Events/Jahr</span></div>
+        <div class="kpi"><span class="kpi__num">10+</span><span class="kpi__label">Events/Jahr</span></div>
         <div class="kpi"><span class="kpi__num">1</span><span class="kpi__label">Kraftwerk</span></div>
       </div>
     </section>
 
-
-    <!-- Fahrzeuge Teaser -->
-    <section id="cars" class="section">
-      <div class="container">
-        <h2>Fahrzeuge im Fokus</h2>
-        <p class="muted">Ein kleiner Einblick in unsere Sammlung.</p>
-        <div class="grid" id="cars-teaser">
-          <article class="card"><h3>Lade Fahrzeuge…</h3></article>
-        </div>
-        <p><a class="btn" href="/cars.html">Alle Fahrzeuge</a></p>
-      </div>
-    </section>
-
-    <!-- Szene Kalender-->
-    <section class="section">
-      <div class="container narrow">
-        <h1>Treffen & Termine</h1>
-        <div id="calendar-list"></div>
-      </div>
-    </section>
-  
-    <!-- Activities Teaser (kommt später dynamisch) -->
+    <!-- Aktuelles -->
     <section id="activities" class="section">
       <div class="container">
-        <h2>Bevorstehende Aktivitäten</h2>
+        <h2>Aktuelles</h2>
+        <div class="content-wide">
+          <p class="muted">
+            Rund um die Ausstellung gibt es Angebote, die das Museum zu einem lebendigen Treffpunkt machen. Gruppenführungen, Firmenanlässe mit Verpflegung oder gemeinsame Ausfahrten gehören ebenso dazu wie die jährlichen Tage der offenen Türe. Die historischen Räume bieten einen stimmungsvollen Rahmen für jede Art Veranstaltungen.
+          </p>
+        </div>
         <div class="grid" id="activities-list">
           <!-- Step 2: JS rendert hier Karten -->
           <article class="card"><h3>Platzhalter</h3><p>Bald folgen Beiträge.</p></article>
         </div>
-        <a class="btn" href="/activities.html">Alle Aktivitäten</a>
       </div>
     </section>
 
-    <!-- News Teaser (kommt später dynamisch) -->
-    <section id="news" class="section">
+    <!-- Fahrzeuge -->
+    <section id="cars" class="section">
       <div class="container">
-        <h2>Neuigkeiten</h2>
-        <div class="grid" id="news-list">
-          <!-- Step 2: JS rendert hier Karten -->
-          <article class="card"><h3>Platzhalter</h3><p>Bald folgen News.</p></article>
+        <h2>Die Fahrzeuge</h2>
+        <div class="content-wide">
+          <p class="muted">
+            Unsere Ausstellung zeigt ausgewählte Toyota Modelle aus privatem Besitz – coole Zeitzeugen der Marken- und Designgeschichte. Vom kultigen Kleinwagen über Sport- und Limousinen bis hin zu Campingbussen und seltenen Modellen: Die Vielfalt ist gross. Das älteste Exponat ist ein Toyotpet Crown von 1958.
+          </p>
         </div>
-        <a class="btn" href="/news.html">Alle News</a>  
+        <div class="grid" id="cars-teaser">
+          <article class="card"><h3>Lade Fahrzeuge…</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Szene Kalender-->
+    <section id="calendar" class="section">
+      <div class="container">
+        <h2>Treffen & Termine</h2>
+        <div class="content-wide">
+          <p class="muted">
+            Bei Ausfahrten, Treffen und Veranstaltungen kommen Fahrzeuge, Menschen und Geschichten zusammen. Ob Klassiker, Daily-Driver oder seltenes Einzelstück – im Mittelpunkt stehen gemeinsame Leidenschaft, unkomplizierte Begegnungen und Benzingespräche unter Gleichgesinnten.
+          </p>        
+        </div>
+        <div id="calendar-list"></div>
+      </div>
+    </section>
+
+    <!-- Geschichten -->
+    <section id="insights" class="section">
+      <div class="container">
+        <h2>Geschichten</h2>
+        <div class="content-wide">
+          <p class="muted">
+            Neuigkeiten, Einblicke und kleine Momente aus dem Museum. Ob neue Fahrzeuge, geschichtliche Rückblicke oder Impressionen von Veranstaltungen – hier gibt es kurze Einblicke über besondere Fahrzeuge, Menschen oder Ereignisse. Es sind Erzählungen aus Vergangenheit und Gegenwart, aus Leidenschaft für alle mit Benzin im Blut.
+          </p>
+        </div>  
+        <div class="grid" id="insights-list">
+          <!-- Step 2: JS rendert hier Karten -->
+          <article class="card"><h3>Platzhalter</h3><p>Bald folgen hier Einblicke ins und ums Museum.</p></article>
+        </div>
       </div>
     </section>
 
     <!-- Besuch / Kontakt -->
-    <section id="visit" class="hero visit-hero">>
-      <div class="container narrow">
-        <h2>Besuch</h2>
-        <p>Via Cantunala 1, 7158 Waltensburg • Donnerstag abends Treffen der Freunde des Museums.</p>
+    <section id="visit" class="visit-block">
+      <div class="container visit-content">
+        
+        <div class="visit-logo">
+          <img src="/assets/images/logo-stm-white.png" alt="Swiss Toyota Museum">
+        </div>
+
+        <div class="visit-info">
+          <h2>Swiss Toyota Museum</h2>
+          <p class="label">Standort</p>
+          <p>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=46.771537,9.119285"
+              target="_blank" rel="noopener">
+              Via Cantunala 1<br>
+              7158 Waltensburg
+            </a><br>
+            Schweiz
+          </p>
+          <p class="label">Kontakt</p>
+          <p><a href="mailto:info@toyota-museum.ch">info@toyota-museum.ch</a></p>
+        </div>
+
+        <div class="visit-info">
+          <h2>&nbsp;</h2>
+          <p class="label">Öffnungszeiten</p>
+          <p>Donnerstag abends – Treffen der Freunde des Museums<br>
+          Weitere Details siehe <a href="/#activities">Aktivitäten</a><br>&nbsp;</p>
+          <p class="label">Weiteres</p>
+          <p>Impressum</p>
+        </div>
+
       </div>
     </section>
   </main>
@@ -103,9 +140,10 @@
 
   <script src="/assets/js/layout.js"></script>  
   <script src="/assets/js/cms.js"></script>
+  <script src="/assets/js/date.js"></script>
   <script src="/assets/js/calendar.js"></script>  
   <script src="/assets/js/home-activities.js"></script>
-  <script src="/assets/js/home-news.js"></script>
+  <script src="/assets/js/home-insights.js"></script>
   <script src="/assets/js/home-cars.js"></script>  
   <script src="/assets/js/home.js"></script>  
 </body>
