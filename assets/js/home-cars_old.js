@@ -21,35 +21,31 @@
         return;
       }
 
-      container.innerHTML = shown
-        .map((car) => {
-          const images = car.images
-            ? car.images.split(",").map((s) => s.trim()).filter(Boolean)
-            : [];
+      container.innerHTML = shown.map(car => {
+        // Bilder splitten
+        const images = car.images ? car.images.split(",") : [];
 
-          let imgTag = "";
-          if (images.length > 0) {
-            const randomImage = images[Math.floor(Math.random() * images.length)];
-            imgTag = `
-              <div class="thumb">
-                <img src="${randomImage}" alt="${car.title}" loading="lazy"
-                     onerror="this.closest('.thumb').remove()">
-              </div>`;
-          }
+        // Zufälliges Bild wählen
+        let imgTag = "";
+        if (images.length > 0) {
+          const randomImage = images[Math.floor(Math.random() * images.length)];
+          imgTag = `
+            <div class="thumb">
+              <img src="${randomImage.trim()}" alt="${car.title}" loading="lazy"
+                  onerror="this.closest('.thumb').remove()">
+            </div>`;
+        }
 
-          const year = car.year ? ` (${car.year})` : "";
-
-          return `
-            <a class="card" href="/cars.html#car-${car.slug}">
-              <div class="card__body">
-                ${imgTag}
-                <h3>${car.title}${year}</h3>
-                ${car.summary ? `<p>${car.summary}</p>` : ""}
-              </div>
-            </a>
-          `;
-        })
-        .join("");
+        return `
+          <a class="card" href="/cars.html">
+            <div class="card__body">
+              ${imgTag}
+              <h3>${car.title} ${car.year ? `(${car.year})` : ""}</h3>
+              ${car.summary ? `<p>${car.summary}</p>` : ""}
+            </div>
+          </a>
+        `;
+      }).join("");
     } catch (err) {
       console.error("Fehler beim Laden der Fahrzeug-Teaser:", err);
       container.innerHTML = `<article class="card"><h3>Fehler</h3><p>Fahrzeuge konnten nicht geladen werden.</p></article>`;
