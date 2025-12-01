@@ -119,15 +119,6 @@ a:hover { text-decoration: underline; }
   display: block;
 }
 
-.nav a { 
-  margin-left: 16px; 
-  color: #333;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.nav a:hover { color: var(--accent); }
-
 /* Grid */
 .grid {
   display: grid;

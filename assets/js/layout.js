@@ -34,3 +34,15 @@ document.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 });
+
+// Burger-Menü öffnen/schließen
+document.addEventListener("click", (event) => {
+  const btn = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".nav");
+  if (!btn || !nav) return;
+
+  // Klick auf den Button -> Menü togglen
+  if (event.target === btn) {
+    nav.classList.toggle("open");
+  }
+});
