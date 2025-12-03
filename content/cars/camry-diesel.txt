@@ -1,6 +1,6 @@
 title: Toyota Camry Diesel
 year: 1985
 summary: Referenzfahrzeug für die Abgasmessungen
-images: camry-diesel/camry1.jpg,camry-diesel/camry2.jpg,camry-diesel/camry3.jpg,camry-diesel/camry4.jpg,camry-diesel/camry5.jpg,
+images: camry-diesel/camry1.jpg,camry-diesel/camry2.jpg,camry-diesel/camry3.jpg,camry-diesel/camry4.jpg,camry-diesel/camry5.jpg
 ---
 Wir haben einen ganz besonderen Toyota Camry Diesel – allerdings nicht so, wie man ihn normalerweise kennt. Dieser Camry wurde von Studenten demontiert, es sind nur noch der Unterboden, Motor und Sitze übrig. Aber: Er fährt noch! Spannendes Detail: Diese Diesel-Version kam nie offiziell in die Schweiz, diente aber als Referenzfahrzeug für die Abgasmessungen an der Fachhochschule Bern.
