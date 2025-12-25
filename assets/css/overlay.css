@@ -1,0 +1,249 @@
+/* ===========================
+   OVERLAY (Modal) + GALLERY
+   =========================== */
+
+:root{
+  --overlay-z: 9999;
+  --overlay-bg: rgba(0,0,0,0.55);
+  --overlay-radius: 16px;
+  --overlay-pad: 1.2rem;
+  --overlay-maxw: 980px;
+}
+
+/* prevent background scroll */
+.no-scroll { overflow: hidden; }
+
+.overlay{
+  position: fixed;
+  inset: 0;
+  z-index: var(--overlay-z);
+  display: none;
+}
+
+.overlay__content { padding-top: 0; }
+
+/* Text & Header auf Bildbreite begrenzen */
+.overlay__header,
+.overlay__text {
+  max-width: calc(100% - 110px); /* 48px links + 48px rechts (Nav) */
+  margin-left: auto;
+  margin-right: auto;
+}
+.overlay__header {
+  margin-bottom: 0.4rem;
+}
+.overlay__text {
+  line-height: 1.55;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;  
+}
+
+/* Overlay Heading – gleich wie Site-H2 */
+.overlay__header h2 {
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  position: relative;
+}
+
+.overlay__header h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: #c40000;   /* dein Toyota-Rot, sollte es schon geben */
+  margin: 0.4rem auto 0;
+  border-radius: 999px;  
+}
+
+.overlay__header .muted {
+  text-align: center;
+}
+
+.overlay.is-open{ display: block; }
+
+.overlay__backdrop{
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-bg);
+}
+
+/* Panel */
+.overlay__panel{
+  position: absolute;
+  left: 50%;
+  top: 3vh;
+  transform: translateX(-50%);
+  width: min(var(--overlay-maxw), 92vw);
+  max-height: 94vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: var(--overlay-radius);
+  padding: var(--overlay-pad);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+/* Close button */
+.overlay__close{
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #fff;
+  cursor: pointer;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+/* Content spacing */
+.overlay__content{ padding-top: 0.2rem; }
+
+.overlay__header h2{
+  margin: 0 0 0.35rem 0;
+}
+
+/* if you have h2::after red line globally, keep it */
+.overlay__header .muted{
+  margin-bottom: 0.8rem;
+}
+
+/* Text */
+.overlay__text p{
+  margin-top: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+
+/* ===========================
+   GALLERY / SLIDER
+   =========================== */
+
+.overlay__gallery{
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+/* The frame defines constant height/ratio */
+.overlay__frame{
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.04);
+
+  /* FIX: constant visual area */
+  aspect-ratio: 4 / 3;
+}
+
+/* The displayed image */
+.overlay__img{
+  width: 100%;
+  height: 100%;
+
+  /* FIX: crop, but choose the middle */
+  object-fit: cover;
+  object-position: center center;
+
+  display: block;
+  cursor: zoom-in; /* for lightbox click */
+}
+
+/* Prev / next buttons */
+.overlay__nav{
+  height: 48px;
+  width: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  user-select: none;
+}
+
+.overlay__nav:active{
+  transform: translateY(1px);
+}
+
+/* Dots */
+.overlay__dots{
+  display: flex;
+  gap: 0.45rem;
+  justify-content: center;
+  margin-top: 0.65rem;
+  padding-bottom: 0.25rem;
+}
+
+.overlay__dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.22);
+  background: transparent;
+  cursor: pointer;
+}
+
+.overlay__dot.is-active{
+  background: rgba(0,0,0,0.55);
+}
+
+/* ===========================
+   LIGHTBOX (full view)
+   =========================== */
+
+.overlay__lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--overlay-z) + 1);
+  background: rgba(0,0,0,0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay__lightbox.is-open{
+  display: flex;
+}
+
+.overlay__lightbox img{
+  width: min(96vw, 1400px);
+  height: min(92vh, 980px);
+  object-fit: contain;
+  background: rgba(0,0,0,0.20);
+  border-radius: 12px;
+  display: block;
+}
+
+/* ===========================
+   Responsive tweaks
+   =========================== */
+
+@media (max-width: 640px){
+  .overlay__panel{
+    top: 2vh;
+    width: 94vw;
+    max-height: 96vh;
+    padding: 1rem;
+  }
+
+  .overlay__gallery{
+    grid-template-columns: 42px 1fr 42px;
+    gap: 0.5rem;
+  }
+
+  .overlay__nav{
+    width: 42px;
+    height: 42px;
+    font-size: 1.7rem;
+  }
+
+  .overlay__text { text-align: left; }
+
+}

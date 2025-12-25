@@ -1,5 +1,5 @@
 title: JDM-Meetup-Zürich
-date: 2026-09-27
+start: 2026-09-27
 end: 2026-09-27
 location: Areal XY, 8050 Zürich
 organizer: JDM Car Club

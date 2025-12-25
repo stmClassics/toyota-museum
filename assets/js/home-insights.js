@@ -1,4 +1,4 @@
-// insights auf der Startseite rendern
+// insights auf der Startseite rendern (2 Stück, Bild links quadratisch)
 (function () {
   const container = document.querySelector("#insights-list");
   if (!container || !window.CMS) return;
@@ -7,37 +7,58 @@
     try {
       let insights = await CMS.loadCollection("/content/insights");
 
-      // Nach Datum absteigend sortieren
-      insights = insights.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+      insights = insights.map(i => ({
+        ...i,
+        slug: Utils.slugify(i.slug || i.title || "")
+      })).filter(i => i.slug);
+            
+      const todayISO = todayISOZurich();
+      insights = insights.filter(i => isPublishedByDate(i, todayISO));
+
+      // Nach Datum absteigend sortieren (neueste zuerst)
+      insights.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 
       if (insights.length === 0) {
         container.innerHTML = `
           <article class="card">
-            <h3>Keine insights</h3>
+            <h3>Keine Geschichten</h3>
             <p>Neuigkeiten folgen bald.</p>
           </article>`;
         return;
       }
 
-      const shown = insights.slice(0, 3);
+      const shown = insights.slice(0, 2);
 
       container.innerHTML = shown.map((item) => {
-        const hasImage = item.hero && item.hero.trim() !== "";
-        const imgBlock = hasImage
-          ? `<div class="thumb">
-               <img src="${item.hero}" alt="${item.title}" loading="lazy"
-                    onerror="this.parentNode.remove()">
-             </div>`
-          : "";
+      const images = item.images
+        ? item.images.split(",").map(s => s.trim()).filter(Boolean)
+        : [];
+
+      const firstImage = images.length ? images[0] : "";
+
+      const imgBlock = firstImage
+        ? `<div class="insight-teaser__thumb">
+            <img src="${firstImage}" alt="${item.title}" loading="lazy"
+                  onerror="this.closest('.insight-teaser__thumb').remove()">
+          </div>`
+        : "";
+
+        // Text: Summary bevorzugen, sonst Body als Plain-Text anreissen
+        const text =
+          (item.summary && item.summary.trim()) ||
+          (item.body ? String(item.body).replace(/\s+/g, " ").trim() : "");
+
+        const excerpt = text.length > 180 ? (text.slice(0, 180).trim() + "…") : text;
 
         return `
-          <a class="card" href="/insights.html">
-          <div class="card__body">
+          <a class="card insight-teaser" href="/insights.html#insight-${item.slug}">
+            <div class="card__body insight-teaser__body">
               ${imgBlock}
-              <h3>${item.title}</h3>
-              <div class="muted">${CMS.formatDate(item.date)}</div>
-              ${item.summary ? `<p>${item.summary}</p>` : ""}
-              ${item.body ? `<details><summary>Mehr lesen</summary>${CMS.bodyToHTML(item.body)}</details>` : ""}
+              <div class="insight-teaser__content">
+                <h3>${item.title}</h3>
+                <div class="muted">${CMS.formatDate(item.date)}</div>
+                ${excerpt ? `<p>${excerpt}</p>` : ""}
+              </div>
             </div>
           </a>
         `;
@@ -48,7 +69,7 @@
       container.innerHTML = `
         <article class="card">
           <h3>Fehler</h3>
-          <p>Die Insights konnten nicht geladen werden.</p>
+          <p>Die Geschichten konnten nicht geladen werden.</p>
         </article>`;
     }
   }

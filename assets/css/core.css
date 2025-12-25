@@ -6,6 +6,11 @@
   --text: #111111;
   --muted: #f6f6f6;
   --border: #e9e9e9;
+  --scroll-offset: 90px; /* ggf. 80/100 anpassen */
+}
+
+#activities, #cars, #calendar, #insights, #visit {
+  scroll-margin-top: var(--scroll-offset);
 }
 
 * { box-sizing: border-box; }
@@ -179,93 +184,6 @@ a:hover { text-decoration: underline; }
    text-align: left !important;
 }
 
-/* --- Car Cards: gleiche Höhe & "… weiterlesen" unten --- */
-
-.grid .car-card {
-  display: flex;
-}
-
-.car-card .card__body {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-}
-
-.car-card__text {
-  flex-grow: 1;
-}
-
-/* --- Overlay für Fahrzeug-Details --- */
-#car-overlay {
-  position: fixed;
-  inset: 0;
-  display: none;
-  z-index: 1000;
-}
-
-#car-overlay.is-open {
-  display: block;
-}
-
-.car-overlay__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.car-overlay__dialog {
-  position: relative;
-  max-width: 900px;
-  max-height: 90vh;
-  margin: 5vh auto;
-  background: #fff;
-  color: #111;
-  border-radius: 12px;
-  padding: 2rem;
-  overflow-y: auto;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-}
-
-.car-overlay__close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.car-overlay__content h2 {
-  margin-top: 0;
-}
-
-.car-overlay__summary {
-  font-style: normal;
-  margin-bottom: 1rem;
-}
-
-/* Bilder im Overlay: alle gleich gross (gleiche Breite / Aspect Ratio) */
-.car-overlay__images {
-  margin: 1.5rem 0;
-  display: grid;
-  gap: 1rem;
-}
-
-.car-overlay__image img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* Body scroll sperren, wenn Overlay offen ist */
-body.no-scroll {
-  overflow: hidden;
-}
-
-
 /* KPIs */
 .kpis { display: grid; gap: 10px; grid-template-columns: repeat(4, 1fr); text-align: center; }
 .kpi__num { display: block; font-weight: 800; font-size: 2rem; }
@@ -320,3 +238,49 @@ body.no-scroll {
   z-index: 1;
 }
 
+/* =========================================================
+   INSIGHTS / GESCHICHTEN
+   - Startseite: 2 Teaser (Bild links quadratisch)
+   - /insights.html: 3-Spalten Grid, Featured = ganze erste Zeile
+   ========================================================= */
+
+.insight-teaser .insight-teaser__body {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.insight-teaser__thumb {
+  flex: 0 0 120px;      /* Quadrat-Breite */
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.insight-teaser__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.insight-teaser__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.insight-teaser__content p {
+  margin-bottom: 0;
+}
+
+/* Mobil: untereinander */
+@media (max-width: 640px) {
+  .insight-teaser .insight-teaser__body {
+    flex-direction: column;
+  }
+  .insight-teaser__thumb {
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* auf mobile angenehmer */
+  }
+}

@@ -1,5 +1,6 @@
-title: 
-date: 2025-12-01
-summary: 
-hero: 
+title: Impressionen 1
+date: 2026-01-02
+summary: Alte Autos sind schön anzuschauen, selbst dann, wenn sie nicht mehr so schön sind.
+images: impressionen/impression3.jpg, impressionen/impression2.jpg, impressionen/impression1.jpg, 
 ---
+In unserem Aussenlager stehen Autos, die schon besser Tage gesehen haben. Vom einstigen Glanz ist nicht mehr viel zu sehen. Trotzdem sind üben sie auf den Betrachter eine gewisse Faszination aus, zeigen, das auch der Zerfall seine schönen Seiten hat. 

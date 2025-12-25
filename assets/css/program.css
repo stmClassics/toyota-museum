@@ -1,0 +1,32 @@
+@media (min-width: 900px){
+  .program-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+.program-card__body{
+  display: block;
+}
+
+.program-card__content{
+  padding: 0;
+}
+
+.program-card .muted{
+  text-align: left;
+}
+
+.program-card__thumb{
+  margin-bottom: 0.8rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.program-card__thumb img{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}

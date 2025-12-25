@@ -1,6 +1,6 @@
-// /insights.html: Editorial-Grid, Featured = neuester, #insight-slug Support
+// /program.html: Editorial-Grid, Featured = neuester, #program-slug Support
 (function () {
-  const container = document.querySelector("#insights-all");
+  const container = document.querySelector("#program-all");
   if (!container || !window.CMS) return;
 
   const parseImages = (item) =>
@@ -23,28 +23,30 @@
 
   async function init() {
     try {
-      let insights = await CMS.loadCollection("/content/insights");
+      let program = await CMS.loadCollection("/content/program");
 
-      insights = insights.map(i => ({
+      program = program.map(i => ({
         ...i,
         slug: Utils.slugify(i.slug || i.title || "")
       })).filter(i => i.slug);
 
-      const todayISO = todayISOZurich();
-      insights = insights.filter(i => isPublishedByDate(i, todayISO));
+      program = program
+        .map(normalizeDateRange)
+        .filter(isOngoingOrUpcoming)
+        .sort(sortByStartDate);
 
-      insights.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+      program.sort((a, b) => a._start - b._start);
 
-      if (insights.length === 0) {
-        container.innerHTML = `<article class="card"><h3>Keine Geschichten</h3><p>Es sind noch keine Meldungen erfasst.</p></article>`;
+      if (program.length === 0) {
+        container.innerHTML = `<article class="card"><h3>Programm</h3><p>Es ist noch kein Programm erfasst.</p></article>`;
         return;
       }
 
-      const featuredSlug = insights[0]?.slug;
+      const featuredSlug = program[0]?.slug;
 
       container.classList.add("program-grid");
 
-      container.innerHTML = insights.map((n) => {
+      container.innerHTML = program.map((n) => {
         const imgs = parseImages(n);
         const firstImage = imgs[0] || "";
         const isFeatured = n.slug === featuredSlug;
@@ -52,28 +54,30 @@
         const text = excerptFrom(n, isFeatured ? 260 : 140);
 
         return `
-          <article class="card insight-card ${isFeatured ? "is-featured" : ""}" id="insight-${n.slug}" data-slug="${n.slug}">
+        <article class="card program-card" id="program-${n.slug}" data-slug="${n.slug}">
+          <div class="card__body program-card__body">
             ${firstImage ? `
-              <div class="insight-card__thumb">
+              <div class="program-card__thumb">
                 <img src="${firstImage}" alt="${n.title}" loading="lazy"
-                     onerror="this.closest('.insight-card__thumb').remove()">
+                    onerror="this.closest('.program-card__thumb').remove()">
               </div>` : ""
             }
-            <div class="insight-card__body">
+            <div class="program-card__content">
               <h3>${n.title}</h3>
-              <div class="muted">${CMS.formatDate(n.date)}</div>
+              <div class="muted">${formatDateRange(n.start, n.end)}</div>
               ${text ? `<p>${text}</p>` : ""}
             </div>
-          </article>
+          </div>
+        </article>
         `;
       }).join("");
 
       container.addEventListener("click", (ev) => {
-        const card = ev.target.closest(".insight-card");
+        const card = ev.target.closest(".program-card");
         if (!card) return;
 
         const slug = card.dataset.slug; // kommt aus data-slug
-        const item = insights.find(i => i.slug === slug);
+        const item = program.find(i => i.slug === slug);
         if (!item) return;
 
         const images = parseImages(item);
@@ -95,7 +99,7 @@
       const open = new URLSearchParams(location.search).get("open");
       if (open) {
         const wanted = Utils.slugify(open);
-        const item = insights.find(i => i.slug === wanted);
+        const item = program.find(i => i.slug === wanted);
         if (item) {
           Overlay.open({
             title: item.title,
@@ -107,14 +111,14 @@
         }
       }
 
-      ScrollUtils.scrollToHash({ prefix: "insight-", offset: 90 });
+      ScrollUtils.scrollToHash({ prefix: "program-", offset: 90 });
       window.addEventListener("hashchange", () =>
-        ScrollUtils.scrollToHash({ prefix: "insight-", offset: 90 })
+        ScrollUtils.scrollToHash({ prefix: "program-", offset: 90 })
       );
 
     } catch (err) {
-      console.error("Fehler beim Laden aller Insights:", err);
-      container.innerHTML = `<article class="card"><h3>Fehler</h3><p>Die Liste der Insights konnte nicht geladen werden.</p></article>`;
+      console.error("Fehler beim Laden des Programms:", err);
+      container.innerHTML = `<article class="card"><h3>Fehler</h3><p>Die Liste des Programms konnte nicht geladen werden.</p></article>`;
     }
   }
 

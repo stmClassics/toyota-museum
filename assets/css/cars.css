@@ -1,0 +1,55 @@
+/* =========================================
+   Cars Cards – wie Insights (Rahmen + Radius)
+   ========================================= */
+
+/* Grid: falls du einen Container hast wie .grid oder #cars-list */
+@media (min-width: 900px){
+  #cars-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+/* ===== Thumb im Rahmen (wie Insights) ===== */
+#cars-list .car-card__thumb{
+  /* Der Rahmen entsteht durch "inset" via margin */
+  margin: 1rem 1.2rem 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ddd;
+
+  /* fixierte Bildfläche */
+  aspect-ratio: 16 / 9;
+}
+
+/* Bild füllt den Rahmen */
+#cars-list .car-card__thumb img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===== Body ===== */
+#cars-list .car-card__body{
+  padding: 1rem 1.2rem 1.4rem;
+}
+
+/* Wenn du global irgend ein flex auf car-card hast: kill it */
+#cars-list .car-card{
+  display: block;
+}
+
+/* H3 spacing */
+.car-card__body h3{
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Text */
+.car-card__text{
+  margin: 0;
+}

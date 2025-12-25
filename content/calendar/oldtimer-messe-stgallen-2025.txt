@@ -1,5 +1,5 @@
 title: Oldtimer-Messe St. Gallen
-date: 2026-05-16
+start: 2026-05-16
 end: 2026-05-18
 location: Olma Hallen, St. Gallen
 organizer: Messe St. Gallen

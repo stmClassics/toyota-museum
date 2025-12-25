@@ -2,54 +2,45 @@ document.addEventListener("DOMContentLoaded", initCalendar);
 
 async function initCalendar() {
   const container = document.getElementById("calendar-list");
-  if (!container) return;
+  if (!container || !window.CMS) return;
 
   try {
-    // Alle Termine laden
     let items = await CMS.loadCollection("/content/calendar");
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const today = todayStartZurich();
 
-    // Hilfsfunktion: Start/Ende bestimmen
-    const parseDate = (str) => str ? new Date(str + "T00:00:00") : null;
+    items = items
+      .map(normalizeDateRange)
+      .filter((ev) => isOngoingOrUpcoming(ev, today))
+      .sort(sortByStartDate);
 
-    items = items.map(ev => {
-      const start = parseDate(ev.date);
-      const end   = parseDate(ev.end) || start;
-      return { ...ev, start, end };
-    });
-
-    // Vergangene Termine rausfiltern:
-    // nur Termine, deren END-Datum heute oder in der Zukunft liegt
-    const upcoming = items
-      .filter(ev => ev.end && ev.end >= today)
-      .sort((a, b) => a.start - b.start); // chronologisch
-
-    if (upcoming.length === 0) {
+    if (items.length === 0) {
       container.innerHTML = "<p>Derzeit sind keine Termine eingetragen.</p>";
       return;
     }
 
-    // Sehr einfache HTML-Struktur: du kannst das später verfeinern
-    const rows = upcoming.map(ev => {
-      const dateStr = formatDateRange(ev.date, ev.end);
-      const location = ev.location || "";
-      const organizer = ev.organizer || "";
-      const type = ev.type || "";
-      const link = ev.link ? `<a href="${ev.link}" target="_blank" rel="noopener">Details</a>` : "";
+    const rows = items
+      .map((ev) => {
+        const dateStr = formatDateRange(ev.start, ev.end);
+        const location = ev.location || "";
+        const organizer = ev.organizer || "";
+        const type = ev.type || "";
+        const link = ev.link
+          ? `<a href="${ev.link}" target="_blank" rel="noopener">Details</a>`
+          : "";
 
-      return `
-        <tr>
-          <td>${dateStr}</td>
-          <td>${ev.title}</td>
-          <td>${location}</td>
-          <td>${organizer}</td>
-          <td>${type}</td>
-          <td>${link}</td>
-        </tr>
-      `;
-    }).join("");
+        return `
+          <tr>
+            <td>${dateStr}</td>
+            <td>${ev.title || ""}</td>
+            <td>${location}</td>
+            <td>${organizer}</td>
+            <td>${type}</td>
+            <td>${link}</td>
+          </tr>
+        `;
+      })
+      .join("");
 
     container.innerHTML = `
       <table class="table calendar-table">
@@ -70,5 +61,6 @@ async function initCalendar() {
     `;
   } catch (err) {
     console.error("Fehler beim Laden des Kalenders:", err);
+    container.innerHTML = "<p>Fehler beim Laden des Kalenders.</p>";
   }
 }

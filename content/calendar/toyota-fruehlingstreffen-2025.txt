@@ -1,5 +1,5 @@
 title: Toyota Frühlingstreffen JPR
-date: 2026-04-27
+start: 2026-04-27
 end: 2026-04-27
 location: Areal XY, 7000 Chur
 organizer: JPR Toyota Club

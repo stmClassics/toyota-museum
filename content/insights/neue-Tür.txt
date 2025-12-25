@@ -1,0 +1,8 @@
+title: Die neue Eingangstür
+date: 2025-12-14
+summary: Die alte Türe war alt und morsch, die neue ist ein Kunstwerk
+images: door/door1.jpg, door/door2.jpg, door/door3.jpg, door/door4.jpg, door/door5.jpg
+---
+Lucas hat sein handwerkliches Geschick unter Beweis gestellt und hat für das Museum eine neue Tür hergestellt. Eine Massanfertigung die auch den Stil des alten Gebäudes aufnimmt.
+
+Die Montage war anstrengend und die Temperatur kalt - die Mühen haben sich aber mehr als gelohnt.
