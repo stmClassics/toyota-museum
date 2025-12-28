@@ -33,10 +33,15 @@
   margin-bottom: 0.4rem;
 }
 .overlay__text {
+  max-width: 100%;
   line-height: 1.55;
   text-align: justify;
   text-justify: inter-word;
   hyphens: auto;  
+}
+.overlay__text p{
+  margin-top: 0.7rem;
+  margin-bottom: 0.9rem;
 }
 
 /* Overlay Heading – gleich wie Site-H2 */
@@ -71,7 +76,7 @@
 
 /* Panel */
 .overlay__panel{
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 3vh;
   transform: translateX(-50%);
@@ -86,8 +91,9 @@
 
 /* Close button */
 .overlay__close{
-  position: sticky;
-  top: 0;
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
   margin-left: auto;
   display: block;
   width: 44px;
@@ -98,10 +104,15 @@
   cursor: pointer;
   font-size: 1.8rem;
   line-height: 1;
+  z-index: 5;
 }
 
 /* Content spacing */
-.overlay__content{ padding-top: 0.2rem; }
+.overlay__content{ 
+  padding-top: 0.2rem; 
+  max-width: 760px;   /* = Bildbreite */
+  margin: 0 auto;  
+}
 
 .overlay__header h2{
   margin: 0 0 0.35rem 0;
@@ -112,31 +123,23 @@
   margin-bottom: 0.8rem;
 }
 
-/* Text */
-.overlay__text p{
-  margin-top: 0.7rem;
-  margin-bottom: 0.9rem;
-}
-
 /* ===========================
    GALLERY / SLIDER
    =========================== */
 
 .overlay__gallery{
   margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 48px 1fr 48px;
-  gap: 0.7rem;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 /* The frame defines constant height/ratio */
 .overlay__frame{
+  min-width: 0;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(0,0,0,0.04);
-
-  /* FIX: constant visual area */
   aspect-ratio: 4 / 3;
 }
 
@@ -221,29 +224,83 @@
   display: block;
 }
 
-/* ===========================
-   Responsive tweaks
-   =========================== */
+/* ===== Mobile Overlay Optimierung ===== */
+@media (max-width: 640px) {
 
-@media (max-width: 640px){
-  .overlay__panel{
-    top: 2vh;
-    width: 94vw;
-    max-height: 96vh;
-    padding: 1rem;
+  /* Galerie nicht mehr seitlich "blockieren" */
+  .overlay__gallery {
+    display: block;
   }
 
-  .overlay__gallery{
-    grid-template-columns: 42px 1fr 42px;
-    gap: 0.5rem;
+  /* Bild bekommt volle Breite */
+  .overlay__frame {
+    width: 100%;
+    margin: 0;
   }
 
-  .overlay__nav{
-    width: 42px;
-    height: 42px;
-    font-size: 1.7rem;
+  /* Pfeile nicht mehr links/rechts am Bild */
+  /* Buttons definitiv nicht mehr absolut */
+  .overlay__nav {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
   }
 
-  .overlay__text { text-align: left; }
+  .overlay__controls{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: 0.6rem;
+  }
+
+  .overlay__dots{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .overlay__nav--next {
+    order: 2;
+  }
+
+  .overlay__dots::before,
+  .overlay__dots::after {
+    content: "";
+  } 
+  
+  /* Pfeile unter dem Bild anzeigen (Auf Desktop bleiben sie absolut)*/
+  .overlay__gallery {
+    position: relative;
+  }
+
+  .overlay__nav {
+    position: relative;
+  }
+
+  /*Overlay-Ränder auf Mobile entschärfen*/
+  .overlay__dialog {
+    width: calc(100vw - 12px);
+    margin: 6px;
+  }
+
+  .overlay__content {
+    max-width: 100%;
+    padding: 0 0.6rem;
+  }
+
+  .overlay__close {
+    top: 0.4rem;
+    right: 0.4rem;
+  }
+
+  /* verhindert Browser-Scroll-Jank beim horizontalen Wischen im Bildbereich */
+  .overlay__frame {
+    touch-action: pan-y;
+  }
 
 }

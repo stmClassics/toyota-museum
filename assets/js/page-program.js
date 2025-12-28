@@ -81,7 +81,7 @@
         if (!item) return;
 
         const images = parseImages(item);
-        const metaHtml = `<div class="muted">${CMS.formatDate(item.date)}</div>`;
+        const metaHtml = `<div class="muted">${formatDateRange(item.start, item.end)}</div>`;
 
         // body: fürs Erste plain text (später hübscher)
         const body = (item.body || "").trim();

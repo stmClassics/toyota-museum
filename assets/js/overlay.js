@@ -9,11 +9,12 @@
     overlayEl = document.createElement("div");
     overlayEl.className = "overlay";
     overlayEl.innerHTML = `
-      <div class="overlay__backdrop" data-close="1"></div>
+    <div class="overlay__backdrop" data-close="1">
       <div class="overlay__panel" role="dialog" aria-modal="true" aria-label="Details">
         <button class="overlay__close" type="button" aria-label="Schliessen" data-close="1">×</button>
         <div class="overlay__content"></div>
       </div>
+    </div>
     `;
     document.body.appendChild(overlayEl);
 
@@ -53,14 +54,17 @@
       ${bodyHtml ? `<div class="overlay__text">${bodyHtml}</div>` : ""}
 
       ${hasImages ? `
-        <div class="overlay__gallery">
+      <div class="overlay__gallery">
+        <div class="overlay__frame">
+          <img class="overlay__img" alt="">
+        </div>
+
+        <div class="overlay__controls" aria-label="Bildnavigation">
           <button class="overlay__nav overlay__nav--prev" type="button" aria-label="Vorheriges Bild">‹</button>
-          <div class="overlay__frame">
-            <img class="overlay__img" alt="">
-          </div>
+          <div class="overlay__dots" aria-label="Bildauswahl"></div>
           <button class="overlay__nav overlay__nav--next" type="button" aria-label="Nächstes Bild">›</button>
         </div>
-        <div class="overlay__dots" aria-label="Bildauswahl"></div>
+      </div>
       ` : ""}
     `;
 
@@ -112,7 +116,7 @@
     if (typeof cb === "function") cb();
   }
 
-    function renderImage() {
+  function renderImage() {
     const img = overlayEl.querySelector(".overlay__img");
     const frame = overlayEl.querySelector(".overlay__frame");
     const src = state.images[state.index];
@@ -129,7 +133,7 @@
 
     img.src = src;
     img.alt = `Bild ${state.index + 1} von ${state.images.length}`;
-    }
+  }
 
   function renderDots() {
     const dots = overlayEl.querySelector(".overlay__dots");
@@ -174,3 +178,46 @@ document.body.appendChild(lb);
 lb.addEventListener("click", () => {
   lb.classList.remove("is-open");
 });
+
+function attachSwipe(frameEl, { onPrev, onNext }) {
+  let startX = 0;
+  let startY = 0;
+  let dx = 0;
+  let dy = 0;
+  let tracking = false;
+
+  const THRESHOLD_X = 45;   // px: wie weit horizontal
+  const THRESHOLD_Y = 35;   // px: wie viel vertikal erlaubt
+  const EDGE_GUARD = 6;     // verhindert accidental taps
+
+  frameEl.addEventListener("touchstart", (e) => {
+    if (!e.touches || e.touches.length !== 1) return;
+    tracking = true;
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    dx = dy = 0;
+  }, { passive: true });
+
+  frameEl.addEventListener("touchmove", (e) => {
+    if (!tracking || !e.touches || e.touches.length !== 1) return;
+    const t = e.touches[0];
+    dx = t.clientX - startX;
+    dy = t.clientY - startY;
+    // nicht preventDefault, damit vertikales Scrollen weiter geht
+  }, { passive: true });
+
+  frameEl.addEventListener("touchend", () => {
+    if (!tracking) return;
+    tracking = false;
+
+    const absX = Math.abs(dx);
+    const absY = Math.abs(dy);
+
+    // klare horizontale Geste
+    if (absX > THRESHOLD_X && absY < THRESHOLD_Y) {
+      if (dx > EDGE_GUARD) onPrev(); // swipe right => vorheriges Bild
+      else if (dx < -EDGE_GUARD) onNext(); // swipe left => nächstes Bild
+    }
+  }, { passive: true });
+}

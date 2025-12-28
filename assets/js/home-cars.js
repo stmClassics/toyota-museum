@@ -31,7 +31,7 @@
           if (images.length > 0) {
             const randomImage = images[Math.floor(Math.random() * images.length)];
             imgTag = `
-              <div class="thumb">
+              <div class="car-card__thumb">
                 <img src="${randomImage}" alt="${car.title}" loading="lazy"
                      onerror="this.closest('.thumb').remove()">
               </div>`;
@@ -41,8 +41,8 @@
 
           return `
             <a class="card" href="/cars.html#car-${car.slug}">
-              <div class="card__body">
-                ${imgTag}
+              ${imgTag}
+              <div class="car-card__body">
                 <h3>${car.title}${year}</h3>
                 ${car.summary ? `<p>${car.summary}</p>` : ""}
               </div>

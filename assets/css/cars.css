@@ -1,55 +1,53 @@
 /* =========================================
-   Cars Cards – wie Insights (Rahmen + Radius)
+   Cars Cards 
    ========================================= */
 
-/* Grid: falls du einen Container hast wie .grid oder #cars-list */
-@media (min-width: 900px){
-  #cars-list {
+ @media (min-width: 900px){
+  #cars-teaser.grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
   }
+  #cars-list.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }  
 }
 
-/* ===== Thumb im Rahmen (wie Insights) ===== */
-#cars-list .car-card__thumb{
-  /* Der Rahmen entsteht durch "inset" via margin */
-  margin: 1rem 1.2rem 0;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #ddd;
+  #cars-list .car-card,
+  #cars-teaser .car-card{
+    display: block;
+  }
 
-  /* fixierte Bildfläche */
-  aspect-ratio: 16 / 9;
-}
+  /* Bild im Rahmen (wie Insights) */
+  #cars-list .car-card__thumb,
+  #cars-teaser .car-card__thumb{
+    margin: 1rem 1.2rem 0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ddd;
+    aspect-ratio: 16 / 9;
+  }
 
-/* Bild füllt den Rahmen */
-#cars-list .car-card__thumb img{
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-}
+  #cars-list .car-card__thumb img,
+  #cars-teaser .car-card__thumb img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
 
-/* ===== Body ===== */
-#cars-list .car-card__body{
-  padding: 1rem 1.2rem 1.4rem;
-}
+  /* Text */
+  #cars-list .car-card__body,
+  #cars-teaser .car-card__body{
+    padding: 1rem 1.2rem 1.4rem;
+  }
 
-/* Wenn du global irgend ein flex auf car-card hast: kill it */
-#cars-list .car-card{
-  display: block;
-}
+  #cars-list .car-card__body h3,
+  #cars-teaser .car-card__body h3{
+    margin: 0 0 0.5rem 0;
+  }
 
-/* H3 spacing */
-.car-card__body h3{
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
 
-/* Text */
-.car-card__text{
-  margin: 0;
-}
