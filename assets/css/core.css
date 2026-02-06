@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('/assets/fonts/roboto-condensed-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('/assets/fonts/roboto-condensed-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 :root {
   --container: 1100px;
   --gap: 20px;
@@ -11,6 +28,19 @@
 
 #activities, #cars, #calendar, #insights, #visit {
   scroll-margin-top: var(--scroll-offset);
+  scroll-snap-margin-top: var(--scroll-offset); /* optional */
+}
+
+/* Anchor offset trick */
+#activities::before,
+#cars::before,
+#calendar::before,
+#insights::before,
+#visit::before {
+  content: "";
+  display: block;
+  height: var(--scroll-offset);
+  margin-top: calc(var(--scroll-offset) * -1);
 }
 
 html { scrollbar-gutter: stable; }

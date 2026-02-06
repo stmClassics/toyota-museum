@@ -2,6 +2,7 @@ title: 13. Toyota Classic Rallye
 start: 2026-09-04
 end: 2026-09-06
 location: Tba.
+images: 
 summary: Die 2026er Classic Rallye führt uns auf kurvige Strassen jenseits der Alpen.
 ---
 Das letzte Mal waren wir im Tirol, diese fahren wir nach... ? Die Planung ist im Gang, wir haben einiges vor und gute Ideen. Details werden hier ca. im Mai veröffentlicht.

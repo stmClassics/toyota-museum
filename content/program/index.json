@@ -1,5 +1,5 @@
 {
-  "imageBase": "/images/program/",
+  "imageBase": "content/program/images/",
   "pdfBase": "/content/program/pdf/",
   "entries": [
     "Dinner-Ride.txt",

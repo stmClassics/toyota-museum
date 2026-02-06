@@ -46,3 +46,4 @@ document.addEventListener("click", (event) => {
     nav.classList.toggle("open");
   }
 });
+
