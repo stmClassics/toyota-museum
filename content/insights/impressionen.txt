@@ -1,5 +1,5 @@
 title: Impressionen 1
-date: 2026-01-02
+date: 2026-11-02
 summary: Alte Autos sind schön anzuschauen, selbst dann, wenn sie nicht mehr so schön sind.
 images: impressionen/impression3.jpg, impressionen/impression2.jpg, impressionen/impression1.jpg, 
 ---

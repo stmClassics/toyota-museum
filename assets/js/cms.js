@@ -60,6 +60,7 @@ async function loadCollection(basePath) {
   // basePath z.B. "/content/news"
   const indexData = await fetchJSON(`${basePath}/index.json`);
   const imageBase = indexData.imageBase || "";
+  const pdfBase = indexData.pdfBase || "";
   const entries = indexData.entries;
 
   const items = await Promise.all(
@@ -71,16 +72,25 @@ async function loadCollection(basePath) {
 
       const raw = await fetchText(`${basePath}/${fileName}`);
       const { meta, body } = parseTextFile(raw);
+      
       if (imageBase && meta.images) {
         meta.images = meta.images
           .split(",")
           .map(path => imageBase + path.trim())
           .join(",");
       }
-
       if (imageBase && meta.hero) {
         meta.hero = imageBase + meta.hero.trim();
       }      
+
+      // PDF-Link auflösen (nur wenn vorhanden)
+      if (meta.pdf) {
+        const p = meta.pdf.trim();
+        // Wenn jemand schon einen absoluten Pfad oder URL eingibt, lassen wir ihn in Ruhe.
+        const isAbs = p.startsWith("/") || /^https?:\/\//i.test(p);
+        meta.pdf = (isAbs || !pdfBase) ? p : (pdfBase + p);
+      }
+      
       return { slug, ...meta, body };
     })
   );

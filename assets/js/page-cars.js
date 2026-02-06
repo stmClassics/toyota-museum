@@ -1,4 +1,5 @@
 // page-cars.js — Autos laden & rendern (Sammlungs-Seite mit Overlay-Modul)
+
 (function () {
   const container = document.querySelector("#cars-list");
   if (!container || !window.CMS) return;
@@ -109,6 +110,20 @@
 
       // nach dem Rendern ggf. zu einem Anker springen
       ScrollUtils.scrollToHash({ prefix: "car-", offset: 90 });
+  
+      // Overlay per Deeplink direkt öffnen
+      OverlayDeepLink.init({
+        items: cars,
+        open: (item) => {
+          const images = item.images ? item.images.split(",").map(s=>s.trim()).filter(Boolean) : [];
+          const metaHtml = item.year ? `<div class="muted">${item.year}</div>` : "";
+          const bodyHtml = item.body ? CMS.bodyToHTML(item.body) : "";
+
+          Overlay.open({ title: item.title, metaHtml, bodyHtml, images, slug: item.slug });
+        }
+      });          
+
+      
     } catch (err) {
       console.error("Fehler beim Laden der Autos:", err);
       container.innerHTML = `
@@ -126,3 +141,4 @@
 
   init();
 })();
+

@@ -7,7 +7,7 @@
 .hero {
   width: 100%;
   min-height: 50vh;              /* Höhe: kannst du auf 60–70vh erhöhen */
-  background: url('/images/hero/main.jpg') center/cover no-repeat;
+  background: url('/assets/images/main.jpg') center/cover no-repeat;
   position: relative;
   display: flex;
   align-items: center;

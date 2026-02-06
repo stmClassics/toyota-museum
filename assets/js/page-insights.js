@@ -92,20 +92,17 @@
         });
       });
 
-      const open = new URLSearchParams(location.search).get("open");
-      if (open) {
-        const wanted = Utils.slugify(open);
-        const item = insights.find(i => i.slug === wanted);
-        if (item) {
-          Overlay.open({
-            title: item.title,
-            metaHtml: `<div class="muted">${CMS.formatDate(item.date)}</div>`,
-            bodyHtml: item.body ? `<p>${Utils.escapeHtml(item.body)}</p>` : "",
-            images: parseImages(item),
-            slug: item.slug
-          });
+      // Overlay per Deeplink direkt öffnen
+      OverlayDeepLink.init({
+        items: insights,
+        open: (item) => {
+          const images = item.images ? parseImages(item) : [];
+          const metaHtml = item.year ? `<div class="muted">${CMS.formatDate(item.date)}</div>` : "";
+          const bodyHtml = item.body ? CMS.bodyToHTML(item.body) : "";
+
+          Overlay.open({ title: item.title, metaHtml, bodyHtml, images, slug: item.slug });
         }
-      }
+      });        
 
       ScrollUtils.scrollToHash({ prefix: "insight-", offset: 90 });
       window.addEventListener("hashchange", () =>

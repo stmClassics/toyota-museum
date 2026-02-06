@@ -1,0 +1,16 @@
+title: Japanese Car-Meet
+start: 2026-03-14
+end: 2026-03-14
+location: Ace Cafe, Sonnmatthof 2, 6023 Rothenburg
+organizer: Ace Cafe Luzern
+type: Treffen
+link: https://www.acecafeluzern.ch
+---
+Frühlingstreffen im Ace Cafe Luzern. 
+Freies Kommen und Gehen.
+
+Ace Cafe Luzern
+Restaurant
+SOUL FOOD, FREEDOM & MOTOR CULTURE
+Sonnmatthof 2, 6023 Rothenburg
++41 41 530 00 44

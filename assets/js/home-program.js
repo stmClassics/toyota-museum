@@ -41,7 +41,7 @@
         .filter(isOngoingOrUpcoming)
         .sort(sortByStartDate);
 
-      const shown = items.slice(0, 2);
+      const shown = items.slice(0, 4); //Anzahl Karten, die angezeigt werden
 
       if (shown.length === 0) {
         container.innerHTML = `

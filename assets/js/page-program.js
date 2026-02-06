@@ -81,11 +81,19 @@
         if (!item) return;
 
         const images = parseImages(item);
+        const pdfHtml = item.pdf
+          ? `<div class="overlay__actions">
+              <a class="btn" href="${item.pdf}" download>Infos als PDF herunterladen</a>
+            </div>`
+          : "";
+
         const metaHtml = `<div class="muted">${formatDateRange(item.start, item.end)}</div>`;
 
-        // body: fürs Erste plain text (später hübscher)
+        // body
         const body = (item.body || "").trim();
-        const bodyHtml = body ? `<p>${Utils.escapeHtml(body)}</p>` : "";
+        const bodyHtml = body
+          ? `<p>${Utils.escapeHtml(body)}</p>${pdfHtml}`
+          : "";
 
         Overlay.open({
           title: item.title,
@@ -96,20 +104,19 @@
         });
       });
 
-      const open = new URLSearchParams(location.search).get("open");
-      if (open) {
-        const wanted = Utils.slugify(open);
-        const item = program.find(i => i.slug === wanted);
-        if (item) {
+      // Overlay per Deeplink direkt öffnen
+      OverlayDeepLink.init({
+        items: program,
+        open: (item) => {
           Overlay.open({
             title: item.title,
-            metaHtml: `<div class="muted">${CMS.formatDate(item.date)}</div>`,
-            bodyHtml: item.body ? `<p>${Utils.escapeHtml(item.body)}</p>` : "",
+            metaHtml: `<div class="muted">${formatDateRange(item.start, item.end)}</div>`,
+            bodyHtml: item.body ? CMS.bodyToHTML(item.body) : "",
             images: parseImages(item),
             slug: item.slug
           });
         }
-      }
+      });
 
       ScrollUtils.scrollToHash({ prefix: "program-", offset: 90 });
       window.addEventListener("hashchange", () =>

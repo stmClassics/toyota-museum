@@ -1,4 +1,7 @@
 // assets/js/overlay.js
+
+let closeOnce = null;
+
 (function () {
   let overlayEl = null;
   let state = { images: [], index: 0, onClose: null };
@@ -23,7 +26,38 @@
     });
 
     document.addEventListener("keydown", (e) => {
-      if (!isOpen()) return;
+      if (!isOpen()) return;function attachSwipe(frameEl, { onPrev, onNext }) {
+  let startX = 0, startY = 0, dx = 0, dy = 0, tracking = false;
+
+  const THRESHOLD_X = 45;
+  const THRESHOLD_Y = 35;
+
+  frameEl.addEventListener("touchstart", (e) => {
+    if (!e.touches || e.touches.length !== 1) return;
+    tracking = true;
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    dx = dy = 0;
+  }, { passive: true });
+
+  frameEl.addEventListener("touchmove", (e) => {
+    if (!tracking || !e.touches || e.touches.length !== 1) return;
+    const t = e.touches[0];
+    dx = t.clientX - startX;
+    dy = t.clientY - startY;
+  }, { passive: true });
+
+  frameEl.addEventListener("touchend", () => {
+    if (!tracking) return;
+    tracking = false;
+
+    if (Math.abs(dx) > THRESHOLD_X && Math.abs(dy) < THRESHOLD_Y) {
+      dx > 0 ? onPrev() : onNext();
+    }
+  }, { passive: true });
+}
+
       if (e.key === "Escape") close();
       if (e.key === "ArrowLeft") prev();
       if (e.key === "ArrowRight") next();
@@ -33,6 +67,38 @@
   function isOpen() {
     return overlayEl && overlayEl.classList.contains("is-open");
   }
+
+function attachSwipe(frameEl, { onPrev, onNext }) {
+  let startX = 0, startY = 0, dx = 0, dy = 0, tracking = false;
+
+  const THRESHOLD_X = 45;
+  const THRESHOLD_Y = 35;
+
+  frameEl.addEventListener("touchstart", (e) => {
+    if (!e.touches || e.touches.length !== 1) return;
+    tracking = true;
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    dx = dy = 0;
+  }, { passive: true });
+
+  frameEl.addEventListener("touchmove", (e) => {
+    if (!tracking || !e.touches || e.touches.length !== 1) return;
+    const t = e.touches[0];
+    dx = t.clientX - startX;
+    dy = t.clientY - startY;
+  }, { passive: true });
+
+  frameEl.addEventListener("touchend", () => {
+    if (!tracking) return;
+    tracking = false;
+
+    if (Math.abs(dx) > THRESHOLD_X && Math.abs(dy) < THRESHOLD_Y) {
+      dx > 0 ? onPrev() : onNext();
+    }
+  }, { passive: true });
+}
 
   function open({ title, metaHtml = "", bodyHtml = "", images = [], slug = "", onClose = null }) {
     ensureOverlay();
@@ -71,6 +137,13 @@
     if (hasImages) {
       content.querySelector(".overlay__nav--prev").addEventListener("click", prev);
       content.querySelector(".overlay__nav--next").addEventListener("click", next);
+
+      const frame = content.querySelector(".overlay__frame");
+      if (frame && !frame.dataset.swipe) {
+        attachSwipe(frame, { onPrev: prev, onNext: next });
+        frame.dataset.swipe = "1";
+      }
+
       renderImage();
       renderDots();
     }
@@ -81,19 +154,22 @@
     const lightbox = document.querySelector(".overlay__lightbox");
     const lbImg = lightbox.querySelector("img");
 
-    const imgEl = content.querySelector(".overlay__img");
-    imgEl.style.cursor = "zoom-in";
+    if (hasImages) {
+      const imgEl = content.querySelector(".overlay__img");
+      imgEl.style.cursor = "zoom-in";
 
-    imgEl.addEventListener("click", () => {
-    lbImg.src = state.images[state.index];
-    lbImg.alt = `Vollansicht ${state.index + 1}`;
-    lightbox.classList.add("is-open");
-    });
+      imgEl.addEventListener("click", () => {
+      lbImg.src = state.images[state.index];
+      lbImg.alt = `Vollansicht ${state.index + 1}`;
+      lightbox.classList.add("is-open");
+      });
+    }    
 
     // Deep link: ?open=slug
     if (slug) {
       const url = new URL(window.location.href);
       url.searchParams.set("open", slug);
+      url.hash = "";
       history.replaceState(null, "", url.toString());
     }
   }
@@ -114,6 +190,12 @@
     const cb = state.onClose;
     state = { images: [], index: 0, onClose: null };
     if (typeof cb === "function") cb();
+
+    if (closeOnce) { closeOnce(); closeOnce = null; }
+  }
+
+  function onCloseOnce(fn) {
+    closeOnce = fn;
   }
 
   function renderImage() {
@@ -167,6 +249,8 @@
 
   // public API
   window.Overlay = { open, close };
+
+  return { open, close, onCloseOnce };
 })();
 
 // Lightbox (Vollansicht)
@@ -179,45 +263,5 @@ lb.addEventListener("click", () => {
   lb.classList.remove("is-open");
 });
 
-function attachSwipe(frameEl, { onPrev, onNext }) {
-  let startX = 0;
-  let startY = 0;
-  let dx = 0;
-  let dy = 0;
-  let tracking = false;
 
-  const THRESHOLD_X = 45;   // px: wie weit horizontal
-  const THRESHOLD_Y = 35;   // px: wie viel vertikal erlaubt
-  const EDGE_GUARD = 6;     // verhindert accidental taps
 
-  frameEl.addEventListener("touchstart", (e) => {
-    if (!e.touches || e.touches.length !== 1) return;
-    tracking = true;
-    const t = e.touches[0];
-    startX = t.clientX;
-    startY = t.clientY;
-    dx = dy = 0;
-  }, { passive: true });
-
-  frameEl.addEventListener("touchmove", (e) => {
-    if (!tracking || !e.touches || e.touches.length !== 1) return;
-    const t = e.touches[0];
-    dx = t.clientX - startX;
-    dy = t.clientY - startY;
-    // nicht preventDefault, damit vertikales Scrollen weiter geht
-  }, { passive: true });
-
-  frameEl.addEventListener("touchend", () => {
-    if (!tracking) return;
-    tracking = false;
-
-    const absX = Math.abs(dx);
-    const absY = Math.abs(dy);
-
-    // klare horizontale Geste
-    if (absX > THRESHOLD_X && absY < THRESHOLD_Y) {
-      if (dx > EDGE_GUARD) onPrev(); // swipe right => vorheriges Bild
-      else if (dx < -EDGE_GUARD) onNext(); // swipe left => nächstes Bild
-    }
-  }, { passive: true });
-}

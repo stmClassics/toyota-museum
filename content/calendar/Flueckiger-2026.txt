@@ -1,0 +1,9 @@
+title: Toyota Old- + Youngtimertreffen
+start: 2026-08-09
+end: 2026-08-09
+location: Garage Flückiger, Huttwilstrasse 58, 4944 Auswil
+organizer: Garage Flückiger
+type: Treffen
+link: https://www.sfag-autohaus.ch/
+---
+Das 14. Toyota Old- + Youngtimertreffen bei der Garage Flückiger in Auswil. 

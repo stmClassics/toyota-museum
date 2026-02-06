@@ -1,0 +1,10 @@
+title: 13. Toyota Classic Rallye
+start: 2026-09-04
+end: 2026-09-06
+location: Schweiz und angrenzend.
+organizer: Swiss Toyota Museum
+type: Ausfahrt
+link: /program.html?open=classic-rallye-2026
+---
+Dieses Jahr findet die seit Jahren beliebte Toyota Classic Rallye wieder statt. 
+

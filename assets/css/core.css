@@ -13,6 +13,8 @@
   scroll-margin-top: var(--scroll-offset);
 }
 
+html { scrollbar-gutter: stable; }
+
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
@@ -76,7 +78,7 @@ a:hover { text-decoration: underline; }
 
 .content-wide {
   max-width: 1030px;      /* breiter, aber immer noch angenehm */
-  margin: 0 auto 2rem;   /* zentriert + Abstand unten */
+  margin: 0 auto 1rem;   /* zentriert + Abstand unten */
 }
 
 .content-wide p {
@@ -128,7 +130,8 @@ a:hover { text-decoration: underline; }
 .grid {
   display: grid;
   gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /*grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));*/
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* Karten  */

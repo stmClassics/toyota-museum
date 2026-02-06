@@ -24,7 +24,6 @@ async function initCalendar() {
         const dateStr = formatDateRange(ev.start, ev.end);
         const location = ev.location || "";
         const organizer = ev.organizer || "";
-        const type = ev.type || "";
         const link = ev.link
           ? `<a href="${ev.link}" target="_blank" rel="noopener">Details</a>`
           : "";
@@ -35,7 +34,6 @@ async function initCalendar() {
             <td>${ev.title || ""}</td>
             <td>${location}</td>
             <td>${organizer}</td>
-            <td>${type}</td>
             <td>${link}</td>
           </tr>
         `;
@@ -50,7 +48,6 @@ async function initCalendar() {
             <th>Termin</th>
             <th>Ort</th>
             <th>Veranstalter</th>
-            <th>Typ</th>
             <th></th>
           </tr>
         </thead>

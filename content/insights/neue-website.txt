@@ -1,10 +1,6 @@
 title: Neue Website für das Toyota Museum
-date: 2026-01-01
-summary: Wir haben unser Erscheinungsbild überarbeitet – klarer, moderner, näher an unseren Klassikern.
+date: 2026-02-01
+summary: Wir haben unser Erscheinungsbild überarbeitet – klarer, moderner, übersichtlicher.
 images: diverses/neue-webseite.png
 ---
 Wir haben unsere Website und unser visuelles Erscheinungsbild aktualisiert.
-Es soll die Brücke schlagen zwischen den klassischen Toyota-Modellen im alten Kraftwerk
-und einer modernen, offenen Community.
-
-Mehr Infos folgen bald – die Fahrzeuge bleiben die Stars.

@@ -8,6 +8,9 @@
   --overlay-radius: 16px;
   --overlay-pad: 1.2rem;
   --overlay-maxw: 980px;
+
+  /* Content width = Bild/Text-Spalte */
+  --overlay-contentw: 760px;
 }
 
 /* prevent background scroll */
@@ -20,52 +23,6 @@
   display: none;
 }
 
-.overlay__content { padding-top: 0; }
-
-/* Text & Header auf Bildbreite begrenzen */
-.overlay__header,
-.overlay__text {
-  max-width: calc(100% - 110px); /* 48px links + 48px rechts (Nav) */
-  margin-left: auto;
-  margin-right: auto;
-}
-.overlay__header {
-  margin-bottom: 0.4rem;
-}
-.overlay__text {
-  max-width: 100%;
-  line-height: 1.55;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;  
-}
-.overlay__text p{
-  margin-top: 0.7rem;
-  margin-bottom: 0.9rem;
-}
-
-/* Overlay Heading – gleich wie Site-H2 */
-.overlay__header h2 {
-  margin-top: 0;
-  text-align: center;
-  margin-bottom: 0.25rem;
-  position: relative;
-}
-
-.overlay__header h2::after {
-  content: "";
-  display: block;
-  width: 3rem;
-  height: 3px;
-  background: #c40000;   /* dein Toyota-Rot, sollte es schon geben */
-  margin: 0.4rem auto 0;
-  border-radius: 999px;  
-}
-
-.overlay__header .muted {
-  text-align: center;
-}
-
 .overlay.is-open{ display: block; }
 
 .overlay__backdrop{
@@ -74,28 +31,29 @@
   background: var(--overlay-bg);
 }
 
-/* Panel */
+/* Panel (Dialog) */
 .overlay__panel{
   position: relative;
   left: 50%;
   top: 3vh;
   transform: translateX(-50%);
-  width: min(var(--overlay-maxw), 92vw);
+  width: min(calc(var(--overlay-contentw) + (2 * var(--overlay-pad))), 92vw);
   max-height: 94vh;
-  overflow: auto;
+
+  /* IMPORTANT: panel itself should NOT scroll, so close button stays put */
+  overflow: visible;
+
   background: #fff;
   border-radius: var(--overlay-radius);
   padding: var(--overlay-pad);
   box-shadow: 0 20px 60px rgba(0,0,0,0.25);
 }
 
-/* Close button */
+/* Close button (always floating inside panel) */
 .overlay__close{
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
-  margin-left: auto;
-  display: block;
   width: 44px;
   height: 44px;
   border-radius: 999px;
@@ -104,27 +62,67 @@
   cursor: pointer;
   font-size: 1.8rem;
   line-height: 1;
-  z-index: 5;
+  display: grid;
+  place-items: center;
+  z-index: 50;
 }
 
-/* Content spacing */
-.overlay__content{ 
-  padding-top: 0.2rem; 
-  max-width: 760px;   /* = Bildbreite */
-  margin: 0 auto;  
+/* Content column: header + text + gallery share same width */
+.overlay__content{
+  max-width: var(--overlay-contentw);
+  margin: 0 auto;
+
+  /* IMPORTANT: content scrolls, not panel */
+  max-height: calc(94vh - (2 * var(--overlay-pad)));
+  overflow: auto;
+
+  padding-top: 0.2rem;
+}
+
+/* ===========================
+   HEADER + TEXT
+   =========================== */
+
+.overlay__header{
+  margin-bottom: 0.6rem;
 }
 
 .overlay__header h2{
   margin: 0 0 0.35rem 0;
+  text-align: center;
+  position: relative;
 }
 
-/* if you have h2::after red line globally, keep it */
+.overlay__header h2::after{
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: #c40000;
+  margin: 0.4rem auto 0;
+  border-radius: 999px;
+}
+
 .overlay__header .muted{
-  margin-bottom: 0.8rem;
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.overlay__text{
+  line-height: 1.55;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.overlay__text p{
+  margin-top: 0.7rem;
+  margin-bottom: 0.9rem;
 }
 
 /* ===========================
    GALLERY / SLIDER
+   Buttons always below image
    =========================== */
 
 .overlay__gallery{
@@ -134,29 +132,38 @@
   gap: 0.6rem;
 }
 
-/* The frame defines constant height/ratio */
+/* Frame defines constant ratio/height */
 .overlay__frame{
+  width: 100%;
   min-width: 0;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(0,0,0,0.04);
   aspect-ratio: 4 / 3;
+
+  /* swipe friendly */
+  touch-action: pan-y;
 }
 
-/* The displayed image */
+/* Displayed image */
 .overlay__img{
   width: 100%;
   height: 100%;
-
-  /* FIX: crop, but choose the middle */
   object-fit: cover;
   object-position: center center;
-
   display: block;
-  cursor: zoom-in; /* for lightbox click */
+  cursor: zoom-in;
 }
 
-/* Prev / next buttons */
+/* Controls row (prev ••• next) */
+.overlay__controls{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 0.1rem;
+}
+
 .overlay__nav{
   height: 48px;
   width: 48px;
@@ -177,10 +184,10 @@
 
 /* Dots */
 .overlay__dots{
+  flex: 1 1 auto;
   display: flex;
   gap: 0.45rem;
   justify-content: center;
-  margin-top: 0.65rem;
   padding-bottom: 0.25rem;
 }
 
@@ -224,83 +231,36 @@
   display: block;
 }
 
-/* ===== Mobile Overlay Optimierung ===== */
-@media (max-width: 640px) {
+/* ===========================
+   Mobile tweaks
+   =========================== */
 
-  /* Galerie nicht mehr seitlich "blockieren" */
-  .overlay__gallery {
-    display: block;
-  }
-
-  /* Bild bekommt volle Breite */
-  .overlay__frame {
-    width: 100%;
-    margin: 0;
-  }
-
-  /* Pfeile nicht mehr links/rechts am Bild */
-  /* Buttons definitiv nicht mehr absolut */
-  .overlay__nav {
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-  }
-
-  .overlay__controls{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.8rem;
-    margin-top: 0.6rem;
-  }
-
-  .overlay__dots{
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    gap: 0.35rem;
-  }
-
-  .overlay__nav--next {
-    order: 2;
-  }
-
-  .overlay__dots::before,
-  .overlay__dots::after {
-    content: "";
-  } 
-  
-  /* Pfeile unter dem Bild anzeigen (Auf Desktop bleiben sie absolut)*/
-  .overlay__gallery {
-    position: relative;
-  }
-
-  .overlay__nav {
-    position: relative;
-  }
-
-  /*Overlay-Ränder auf Mobile entschärfen*/
-  .overlay__dialog {
+@media (max-width: 640px){
+  .overlay__panel{
     width: calc(100vw - 12px);
-    margin: 6px;
+    top: 2vh;
+    padding: 0.9rem;
   }
 
-  .overlay__content {
+  .overlay__content{
     max-width: 100%;
-    padding: 0 0.6rem;
+    max-height: calc(94vh - (2 * 0.9rem));
+    padding-top: 0.1rem;
   }
 
-  .overlay__close {
+  .overlay__close{
     top: 0.4rem;
     right: 0.4rem;
   }
 
-  /* verhindert Browser-Scroll-Jank beim horizontalen Wischen im Bildbereich */
-  .overlay__frame {
-    touch-action: pan-y;
+  .overlay__nav{
+    width: 44px;
+    height: 44px;
+    font-size: 1.8rem;
   }
 
+  .overlay__dot{
+    width: 9px;
+    height: 9px;
+  }
 }
