@@ -1,0 +1,10 @@
+title: Crown Picnic (Coronas welcome too)
+start: 2026-08-23
+end: 2026-08-23
+location: Swiss Toyota Museum
+organizer: stmClassics
+type: Treffen
+link: /program.html?open=crown-picnic-2026
+---
+Im Sommer laden wir zum Toyota Crown Picnic ein. Im Zentrum steht unser Toyopet Crown auch die anderen Crowns, die wir in unserer Sammlung haben.
+

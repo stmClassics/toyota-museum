@@ -1,0 +1,10 @@
+title: 13. Lenzerheide Motor Classics
+start: 2026-05-29
+end: 2026-05-31
+location: Tiefencastel bis Lenzerheide
+organizer: Verein Lenzerheide MotorClassics
+type: Bergrennen
+link: https://www.lenzerheidemotorclassics.ch
+---
+Das Lenzerheide Motor Classics ist ein einzigartiges Bergrennen in den Bündner Alpen. Erlebe historische Rennfahrzeuge hautnah auf der legendären Strecke zwischen Tiefencastel und Lenzerheide.
+
