@@ -1,0 +1,27 @@
+{
+  "name": "toyota-museum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stmClassics/toyota-museum.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/stmClassics/toyota-museum/issues"
+  },
+  "homepage": "https://github.com/stmClassics/toyota-museum#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "scripts": {
+    "dev": "live-server --port=8080 --open=/index.html --watch=index.html,css,js,assets"
+  }  
+}
