@@ -2,7 +2,7 @@ title: Concours d'Elegance Zürich (ZCCA)
 start: 2026-08-12
 end: 2026-08-12
 location: Bürkliplatz, Zürich
-organizer: openairtours.ch
+organizer: Open Air Tours
 type: Treffen
 link: https://www.openairtours.ch/car-awards/zcca-zurich-classic-car-award/
 ---
