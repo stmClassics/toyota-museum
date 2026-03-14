@@ -51,7 +51,7 @@
         const excerpt = text.length > 180 ? (text.slice(0, 180).trim() + "…") : text;
 
         return `
-          <a class="card insight-teaser" href="/insights.html#insight-${item.slug}">
+          <a class="card insight-teaser" href="/insights.html?open=${item.slug}">
             <div class="card__body insight-teaser__body">
               ${imgBlock}
               <div class="insight-teaser__content">

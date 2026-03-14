@@ -40,7 +40,7 @@
           const year = car.year ? ` (${car.year})` : "";
 
           return `
-            <a class="card" href="/cars.html#car-${car.slug}">
+            <a class="card" href="/cars.html?open=${car.slug}">
               ${imgTag}
               <div class="car-card__body">
                 <h3>${car.title}${year}</h3>

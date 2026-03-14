@@ -31,9 +31,12 @@
       })).filter(i => i.slug);
 
       const todayISO = todayISOZurich();
-      insights = insights.filter(i => isPublishedByDate(i, todayISO));
+      insights = insights
+        .filter(i => isPublishedByDate(i, todayISO));
 
-      insights.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+      
+      
+        insights.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 
       if (insights.length === 0) {
         container.innerHTML = `<article class="card"><h3>Keine Geschichten</h3><p>Es sind noch keine Meldungen erfasst.</p></article>`;
@@ -49,7 +52,7 @@
         const firstImage = imgs[0] || "";
         const isFeatured = n.slug === featuredSlug;
 
-        const text = excerptFrom(n, isFeatured ? 260 : 140);
+        const text = excerptFrom(n, isFeatured ? 210 : 210);
 
         return `
           <article class="card insight-card ${isFeatured ? "is-featured" : ""}" id="insight-${n.slug}" data-slug="${n.slug}">

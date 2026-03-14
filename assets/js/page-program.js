@@ -51,17 +51,11 @@
         const firstImage = imgs[0] || "";
         const isFeatured = n.slug === featuredSlug;
 
-        const text = excerptFrom(n, isFeatured ? 260 : 140);
+        const text = excerptFrom(n, isFeatured ? 210 : 210);
 
         return `
         <article class="card program-card" id="program-${n.slug}" data-slug="${n.slug}">
           <div class="card__body program-card__body">
-            ${firstImage ? `
-              <div class="program-card__thumb">
-                <img src="${firstImage}" alt="${n.title}" loading="lazy"
-                    onerror="this.closest('.program-card__thumb').remove()">
-              </div>` : ""
-            }
             <div class="program-card__content">
               <h3>${n.title}</h3>
               <div class="muted">${formatDateRange(n.start, n.end)}</div>

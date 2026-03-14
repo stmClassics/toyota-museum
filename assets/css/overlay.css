@@ -132,20 +132,27 @@
   gap: 0.6rem;
 }
 
-/* Frame */
+/* Frame defines constant ratio/height */
 .overlay__frame{
   width: 100%;
   min-width: 0;
+  border-radius: 12px;
+  overflow: hidden;
   background: rgba(0,0,0,0.04);
+  aspect-ratio: 5 / 3;
+
+  /* swipe friendly */
   touch-action: pan-y;
 }
 
 /* Displayed image */
 .overlay__img{
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
   display: block;
-  border-radius: 12px;
+  cursor: zoom-in;
 }
 
 /* Controls row (prev ••• next) */
