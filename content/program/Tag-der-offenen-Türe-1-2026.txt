@@ -1,8 +1,8 @@
-title: Tag der offenen Tür
+title: Opening Days 2026 - Tag der offenen Tür
 start: 2026-05-16
 end: 2026-05-17
 location: Toyota Museum Waltensburg
-images: Openning-Days-2026,jpg
+images: Opening-Days-2026.jpg
 summary: Eröffnung des Toyota-Museums 2026.
 link: https://www.google.com/maps/d/edit?mid=1e3t0s794ixY7WziuixVqlBioXwiem2E&usp=sharing
 ---
