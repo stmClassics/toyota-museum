@@ -1,6 +1,6 @@
 {
   "imageBase": "content/program/images/",
-  "pdfBase": "/content/program/pdf/",
+  "pdfBase": "content/program/pdf/",
   "entries": [
     "Ride-Dine-classic.txt",
     "Dinner-Ride.txt",
