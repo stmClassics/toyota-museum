@@ -3,6 +3,8 @@ start: 2026-09-12
 end: 2026-09-13
 location: Toyota Museum Waltensburg
 summary: Gemütliches Treffen für Oldtimer-Fans bei uns im Museum.
+images: Tag-der-offenen-Tuer.jpg
+link: https://www.google.com/maps/d/edit?mid=1e3t0s794ixY7WziuixVqlBioXwiem2E&usp=sharing
 pdf:
 ---
 Wir öffnen unsere Türen für alle Auto-Begeisterten! Kommt vorbei, entdeckt unsere Sammlung live und geniesst feines vom Grill, Süsses und Getränke. Bei schönem Wetter stellen wir die Festbänke und Liegestühle draussen auf, direkt unter den Bäumen beim rauschenden Vorderrhein. Der Eintritt ist frei.
