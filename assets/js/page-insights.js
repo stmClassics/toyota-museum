@@ -82,9 +82,20 @@
         const images = parseImages(item);
         const metaHtml = `<div class="muted">${CMS.formatDate(item.date)}</div>`;
 
-        // body: fürs Erste plain text (später hübscher)
+        const summary = (item.summary || "").trim();
         const body = (item.body || "").trim();
-        const bodyHtml = body ? `<p>${Utils.escapeHtml(body)}</p>` : "";
+
+        const pdfHtml = item.pdf
+          ? `<div class="overlay__actions">
+              <a class="btn" href="${item.pdf}" download>Infos als PDF herunterladen</a>
+            </div>`
+          : "";
+
+        const bodyHtml = `
+          ${summary ? `<p class="lead">${Utils.escapeHtml(summary)}</p>` : ""}
+          ${body ? CMS.bodyToHTML(body) : ""}
+          ${pdfHtml}
+        `;
 
         Overlay.open({
           title: item.title,
@@ -101,7 +112,20 @@
         open: (item) => {
           const images = item.images ? parseImages(item) : [];
           const metaHtml = item.year ? `<div class="muted">${CMS.formatDate(item.date)}</div>` : "";
-          const bodyHtml = item.body ? CMS.bodyToHTML(item.body) : "";
+          const summary = (item.summary || "").trim();
+          const body = (item.body || "").trim();
+
+          const pdfHtml = item.pdf
+            ? `<div class="overlay__actions">
+                <a class="btn" href="${item.pdf}" download>Infos als PDF herunterladen</a>
+              </div>`
+            : "";
+
+          const bodyHtml = `
+            ${summary ? `<p class="lead">${Utils.escapeHtml(summary)}</p>` : ""}
+            ${body ? CMS.bodyToHTML(body) : ""}
+            ${pdfHtml}
+          `;
 
           Overlay.open({ title: item.title, metaHtml, bodyHtml, images, slug: item.slug });
         }

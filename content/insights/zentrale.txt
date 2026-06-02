@@ -1,0 +1,8 @@
+title: Unsere Zentrale
+date: 2026-01-01
+summary: Das Swiss Toyota Museum befindet sich in der ehemaligen Zentrale des Elektrizitätswerks Bündner Oberland.
+images: tuer-innen.jpg
+pdf: Elektrizitätswerk Bündner-Oberland.pdf
+---
+Als das Kraftwerk 1907 in Betrieb ging, versorgte es weite Teile des Vorderrheintals mit elektrischem Strom – damals eine technische Pionierleistung. Heute erzeugen wir hier keine Kilowatt mehr, sondern stellen Autos mit mehr oder weniger Pferdestärken aus. Und unter uns: Das Gebäude selbst ist fast ein bisschen die eigentliche Attraktion: Es ist ein Stück Bündner Industriegeschichte. Im PDF ist eine Beschreibung der Anlage aus der Schweizerische Bauzeitung vom 1.2.1908 zu lesen.
+

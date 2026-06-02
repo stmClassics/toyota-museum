@@ -1,7 +1,9 @@
 {
-  "imageBase": "/images/insights/",
+  "imageBase": "content/insights/images/",
+  "pdfBase": "content/insights/pdf/",
   "entries": [
-    "neue-website.txt",
+    "interview.txt",
+    "zentrale.txt",
     "Standmotor.txt",
     "impressionen.txt",
     "neue-Tür.txt"
