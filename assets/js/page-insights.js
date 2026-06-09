@@ -87,13 +87,22 @@
 
         const pdfHtml = item.pdf
           ? `<div class="overlay__actions">
-              <a class="btn" href="${item.pdf}" download>Infos als PDF herunterladen</a>
+              <a class="btn" href="${item.pdf}" target="_blank" rel="noopener">Infos im PDF-Format</a>
             </div>`
           : "";
+
+        const linkHtml = item.link
+          ? `<div class="overlay__actions">
+              <a class="btn" href="${item.link}" target="_blank" rel="noopener">
+                ${item.linktext || "Link öffnen"}
+              </a>
+            </div>`
+            : "";
 
         const bodyHtml = `
           ${summary ? `<p class="lead">${Utils.escapeHtml(summary)}</p>` : ""}
           ${body ? CMS.bodyToHTML(body) : ""}
+          ${linkHtml}            
           ${pdfHtml}
         `;
 
@@ -117,13 +126,22 @@
 
           const pdfHtml = item.pdf
             ? `<div class="overlay__actions">
-                <a class="btn" href="${item.pdf}" download>Infos als PDF herunterladen</a>
+                <a class="btn" href="${item.pdf}" target="_blank" rel="noopener">Infos im PDF-Format</a>
+              </div>`
+            : "";
+
+          const linkHtml = item.link
+            ? `<div class="overlay__actions">
+                <a class="btn" href="${item.link}" target="_blank" rel="noopener">
+                  ${item.linktext || "Link öffnen"}
+                </a>
               </div>`
             : "";
 
           const bodyHtml = `
             ${summary ? `<p class="lead">${Utils.escapeHtml(summary)}</p>` : ""}
             ${body ? CMS.bodyToHTML(body) : ""}
+            ${linkHtml}            
             ${pdfHtml}
           `;
 

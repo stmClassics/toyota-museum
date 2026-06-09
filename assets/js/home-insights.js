@@ -27,7 +27,7 @@
         return;
       }
 
-      const shown = insights.slice(0, 2);
+      const shown = insights.slice(0, 4);
 
       container.innerHTML = shown.map((item) => {
       const images = item.images

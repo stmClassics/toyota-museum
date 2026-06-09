@@ -7,3 +7,6 @@ summary: Eröffnung des Toyota-Museums 2026.
 link: https://www.google.com/maps/d/edit?mid=1e3t0s794ixY7WziuixVqlBioXwiem2E&usp=sharing
 ---
 Wir öffnen unsere Türen das erste mal dieses Jahr und heissen alle Auto-Begeisterten herzlich willkommen. Kommt vorbei, entdeckt unsere Sammlung live und geniesst feines vom Grill, Süsses und Getränke. Bei schönem Wetter stellen wir die Festbänke und Liegestühle draussen auf, direkt unter den Bäumen beim rauschenden Vorderrhein. Der Eintritt ist frei.
+
+
+http://127.0.0.1:8080/content/insights/images/Wendeltreppe.jpg
