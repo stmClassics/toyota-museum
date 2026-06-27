@@ -51,27 +51,29 @@
         const firstImage = imgs[0] || "";
         const isFeatured = n.slug === featuredSlug;
 
-        const text = excerptFrom(n, isFeatured ? 210 : 210);
+        const text = excerptFrom(n, isFeatured ? 140 : 140);
 
         return `
-        <article class="card program-card" id="program-${n.slug}" data-slug="${n.slug}">
-            ${firstImage ? `
-              <div class="program-card__thumb">
-                <img src="${firstImage}" alt="${n.title}" loading="lazy"
-                     onerror="this.closest('.insight-card__thumb').remove()">
-              </div>` : ""
-            }          
-            <div class="program-card__body">
-              <h3>${n.title}</h3>
-              <div class="muted">${formatDateRange(n.start, n.end)}</div>
-              ${text ? `<p>${text}</p>` : ""}
+        <article class="card content-teaser" id="program-${n.slug}" data-slug="${n.slug}">
+            <div class="card__body content-teaser__body">
+              ${firstImage ? `
+                <div class="content-teaser__thumb">
+                  <img src="${firstImage}" alt="${n.title}" loading="lazy"
+                      onerror="this.closest('.content-card__thumb').remove()">
+                </div>` : ""
+              }          
+              <div class="content-teaser__content">
+                <h3>${n.title}</h3>
+                <div class="muted">${formatDateRange(n.start, n.end)}</div>
+                ${text ? `<p>${text}</p>` : ""}
+              </div>
             </div>
         </article>
         `;
       }).join("");
 
       container.addEventListener("click", (ev) => {
-        const card = ev.target.closest(".program-card");
+        const card = ev.target.closest(".content-teaser");
         if (!card) return;
 
         const slug = card.dataset.slug; // kommt aus data-slug
@@ -79,19 +81,31 @@
         if (!item) return;
 
         const images = parseImages(item);
+        const metaHtml = `<div class="muted">${formatDateRange(item.start, item.end)}</div>`;
+ 
+        const summary = (item.summary || "").trim();
+        const body = (item.body || "").trim();
+
         const pdfHtml = item.pdf
           ? `<div class="overlay__actions">
-              <a class="btn" href="${item.pdf}" download>Infos als PDF herunterladen</a>
+              <a class="btn" href="${item.pdf}" target="_blank" rel="noopener">Infos im PDF-Format</a>
             </div>`
           : "";
 
-        const metaHtml = `<div class="muted">${formatDateRange(item.start, item.end)}</div>`;
+        const linkHtml = item.link
+          ? `<div class="overlay__actions">
+              <a class="btn" href="${item.link}" target="_blank" rel="noopener">
+                ${item.linktext || "Link öffnen"}
+              </a>
+            </div>`
+            : "";
 
-        // body
-        const body = (item.body || "").trim();
-        const bodyHtml = body
-          ? `<p>${Utils.escapeHtml(body)}</p>${pdfHtml}`
-          : "";
+        const bodyHtml = `
+          ${summary ? `<p class="lead">${Utils.escapeHtml(summary)}</p>` : ""}
+          ${body ? CMS.bodyToHTML(body) : ""}
+          ${linkHtml}            
+          ${pdfHtml}
+        `;
 
         Overlay.open({
           title: item.title,
@@ -106,15 +120,35 @@
       OverlayDeepLink.init({
         items: program,
         open: (item) => {
-          Overlay.open({
-            title: item.title,
-            metaHtml: `<div class="muted">${formatDateRange(item.start, item.end)}</div>`,
-            bodyHtml: item.body ? CMS.bodyToHTML(item.body) : "",
-            images: parseImages(item),
-            slug: item.slug
-          });
+          const images = item.images ? parseImages(item) : [];
+          const metaHtml = item.year ? `<div class="muted">${formatDateRange(item.start, item.end)}</div>` : "";
+          const summary = (item.summary || "").trim();
+          const body = (item.body || "").trim();
+
+          const pdfHtml = item.pdf
+            ? `<div class="overlay__actions">
+                <a class="btn" href="${item.pdf}" target="_blank" rel="noopener">Infos im PDF-Format</a>
+              </div>`
+            : "";
+
+          const linkHtml = item.link
+            ? `<div class="overlay__actions">
+                <a class="btn" href="${item.link}" target="_blank" rel="noopener">
+                  ${item.linktext || "Link öffnen"}
+                </a>
+              </div>`
+            : "";
+
+          const bodyHtml = `
+            ${summary ? `<p class="lead">${Utils.escapeHtml(summary)}</p>` : ""}
+            ${body ? CMS.bodyToHTML(body) : ""}
+            ${linkHtml}            
+            ${pdfHtml}
+          `;
+
+          Overlay.open({ title: item.title, metaHtml, bodyHtml, images, slug: item.slug });
         }
-      });
+      });          
 
       ScrollUtils.scrollToHash({ prefix: "program-", offset: 90 });
       window.addEventListener("hashchange", () =>

@@ -1,0 +1,126 @@
+/* =========================================================
+*/
+
+.content-teaser .content-teaser__body {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.content-teaser__thumb {
+  flex: 0 0 120px;
+  height: 120px;          /* 4:3 bei 120 px Breite */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.content-teaser__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content-teaser__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.content-teaser__content p {
+  margin-bottom: 0;
+}
+
+/* Mobil: untereinander */
+@media (max-width: 640px) {
+  .content-teaser .content-teaser__body {
+    flex-direction: column;
+  }
+  .content-teaser__thumb {
+    flex: 0 0 auto;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* auf mobile angenehmer */
+  }
+}
+
+
+:root{
+  --insights-gap: 1.2rem;
+  --card-pad: 1rem;
+}
+
+/* Jede content-card: Bild links, Text rechts */
+  .content-card{
+    display: grid;
+    grid-template-columns: 180px 1fr; /* <-- DAS ist der wichtige Regler */
+    gap: 1.2rem;
+    align-items: start;
+  }
+
+  /* Bild links: quadratisch, bewusst kleiner */
+  .content-card__thumb{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 0;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .content-card__thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Textblock rechts */
+  .content-card__body{
+    min-width: 0;
+  }
+
+/* Text-Ruhe: gleiche Höhen, weniger “springendes” Layout */
+.content-card p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;   /* Standard: 4 Zeilen */
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* ---------- Desktop Layout: 3 Spalten, Featured = ganze erste Zeile ---------- */
+
+@media (min-width: 900px) {
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;   /* etwas mehr Luft als beim 3er */
+    align-items: stretch;
+  }
+
+  .content-card{
+    padding: var(--card-pad);
+  }  
+  
+  .content-card.is-featured {
+    background: rgba(200,0,0,0.03);
+  }
+
+  .content-card.is-featured h2 {
+    font-size: 1.8rem;   /* minimal grösser */
+  }
+
+  .content-card.is-featured p{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+
+/* ---------- Mobil: Featured wieder “normal” (untereinander) ---------- */
+
+@media (max-width: 899px) {
+  .content-card.is-featured {
+    flex-direction: column;
+  }
+}

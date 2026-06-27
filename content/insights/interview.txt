@@ -1,5 +1,5 @@
 title: Vom Traum zum Museum
-date: 2026-01-01
+date: 2026-06-03
 summary: Wie kommt man auf die Idee, in einem ehemaligen Kraftwerk ein Toyota-Museum einzurichten?
 images: peppe-rtr.png
 pdf: interview-zeitung.pdf
