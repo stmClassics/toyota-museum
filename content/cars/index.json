@@ -1,11 +1,14 @@
 {
-  "imageBase": "/images/cars/",
+  "imageBase": "content/cars/images/",
   "entries": [
     "celica-ra28.txt",
     "rav4-xa10-breit.txt",
     "toyopet-crown.txt",
     "sports-800.txt",
     "light-stout.txt",
-    "camry-diesel.txt"
+    "camry-diesel.txt",
+    "century.txt",
+    "crown.txt",
+    "sera.txt"
   ]
 }

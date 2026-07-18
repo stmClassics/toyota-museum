@@ -78,8 +78,7 @@
       (item.body ? String(item.body) : "")
     ).trim();
 
-    // einfache Textdarstellung (später gern hübscher/mit Absätzen)
-    const bodyHtml = bodyText ? `<p>${Utils.escapeHtml(bodyText)}</p>` : "";
+    const bodyHtml = bodyText ? CMS.bodyToHTML(bodyText) : "";
 
     Overlay.open({
       title: item.title || item.name || "",
