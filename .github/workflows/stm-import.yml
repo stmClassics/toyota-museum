@@ -2,6 +2,12 @@ name: STM Import
 
 on:
   workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Importierte Inhalte auf der Website veröffentlichen?'
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: read
