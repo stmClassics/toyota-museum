@@ -1,8 +1,8 @@
-title: Ride & Dine classic 2026
-start: 2026-05-01
-end: 2026-09-30
+title: Museumsbesichtigung mit Apero (Ride & Dine classic 2027)
+start: 2027-04-01
+end: 2027-09-30
 location: Swiss Toyota Museum
 summary: Besichtigung des Toyota Museum mit Apero, Mittagessen und Führung.
 pdf: ride-dine-classic.pdf
 ---
-Erlebt einen unvergesslichen Tag in Waltensburg, wo sich das Toyota Museum befindet. Es erwartet Euch ein Apero, ein feines Mittagessen und eine spannenden Führung durch das Museum und durch unsere Lagerhalle.
+Erlebe einen unvergesslichen Tag bei uns in Waltensburg im Toyota Museum. Es erwartet Euch ein Apero, ein feines Mittagessen und eine spannende Führung durch das Museum und durch unsere Lagerhalle.

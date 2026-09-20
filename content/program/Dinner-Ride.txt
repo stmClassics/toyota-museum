@@ -1,10 +1,9 @@
-title: Dine & Ride 2026
-start: 2026-05-01
-end: 2026-09-30
+title: Ausflug mit Besichtigung des Toyota Museums (Dine & Ride 2027)
+start: 2027-05-01
+end: 2027-09-30
 location: Swiss Toyota Museum
-summary: Ausflug zum Toyota Museum über die schönsten Strassen der Gegend.
-pdf: Dine-Ride-Programm.pdf
+summary: Fahrt über die schönsten Strassen der Gegend zum Toyota Museum.
+pdf: dine-ride-programm.pdf
 ---
-Erlebt einen unvergesslichen Tag voller Automobilgeschichte und landschaftlicher Schönheit! 
-Startet mit uns zu einer begleiteten Fahrt durch die beeindruckende Ruinaulta. Treffpunkt und Sammelpunkt ist der Parkplatz an der Versamerstrasse in Bonaduz. Unsere erste Station ist die Aussichtsplattform am Anfang der Ruinaulta, wo es eine atemberaubende Aussicht zu bestaunen gibt.
-Von dort aus geht es weiter durch die faszinierende Landschaft der Ruinaulta nach Ilanz und schließlich nach Waltensburg, wo sich das Toyota Museum befindet. Dort erwartet Euch ein herzlicher Apero, gefolgt von einer spannenden Führung durch das Museum und durch unsere Lagerhalle.
+Erlebe einen unvergesslichen Tag voller Automobilgeschichte, landschaftlicher Schönheit und einem Apero.  
+Starte mit uns zu einer begleiteten Fahrt durch die beeindruckende Ruinaulta. Treffpunkt und Sammelpunkt ist der Parkplatz an der Versamerstrasse in Bonaduz. Unsere erste Station ist die Aussichtsplattform am Anfang der Ruinaulta, wo es eine atemberaubende Aussicht zu bestaunen gibt. Von dort aus geht es weiter durch die faszinierende Landschaft der Ruinaulta nach Ilanz und schließlich nach Waltensburg, wo sich das Toyota Museum befindet. Dort wartet ein herzlicher Apero, gefolgt von einer spannenden Führung durch das Museum und durch unsere Lagerhalle.
