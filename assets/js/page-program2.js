@@ -32,7 +32,7 @@
 
       program = program
         .map(normalizeDateRange)
-        .filter(isOngoingOrUpcoming)
+        .filter(i => isOngoingOrUpcoming(i))
         .sort(sortByStartDate);
 
       program.sort((a, b) => a._start - b._start);

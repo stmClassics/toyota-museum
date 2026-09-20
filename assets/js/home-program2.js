@@ -14,7 +14,7 @@
 
       program = program
         .map(normalizeDateRange)
-        .filter(isOngoingOrUpcoming)
+        .filter(i => isOngoingOrUpcoming(i))
         .sort(sortByStartDate);
 
       const shown = program.slice(0, 6);
