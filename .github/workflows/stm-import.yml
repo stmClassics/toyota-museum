@@ -10,7 +10,7 @@ on:
         default: false
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   import:
@@ -50,3 +50,16 @@ jobs:
           path: |
             content/
           retention-days: 7
+          
+      - name: Importierte Inhalte veröffentlichen
+        if: ${{ inputs.publish && success() }}
+        run: |
+          git config user.name "STM Import Bot"
+          git config user.email "stm-import-bot@users.noreply.github.com"
+          git add -- content/
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen zu veröffentlichen."
+          else
+            git commit -m "Update museum content from Google Drive"
+            git push origin HEAD:main
+          fi          
