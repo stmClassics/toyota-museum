@@ -1,0 +1,46 @@
+name: STM Import
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v4
+
+      - name: Node.js bereitstellen
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Google-Zugang bereitstellen
+        env:
+          GOOGLE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          mkdir -p credentials
+          printf '%s' "$GOOGLE_KEY" > credentials/google-drive-service-account.json
+
+      - name: Inhalte importieren
+        run: node tools/drive-content.js --apply
+
+      - name: Änderungen anzeigen
+        if: always()
+        run: git status --short
+
+      - name: Importergebnisse bereitstellen
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stm-import-ergebnis
+          path: |
+            content/
+          retention-days: 7
