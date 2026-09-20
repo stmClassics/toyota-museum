@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "live-server --port=8080 --open=/index.html --watch=index.html,css,js,assets"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
   "devDependencies": {
     "live-server": "^1.2.2"
   },
-  "scripts": {
-    "dev": "live-server --port=8080 --open=/index.html --watch=index.html,css,js,assets"
-  }  
+  "dependencies": {
+    "@google-cloud/local-auth": "^3.0.1",
+    "googleapis": "^180.0.0"
+  }
 }
