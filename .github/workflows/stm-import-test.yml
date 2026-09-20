@@ -42,5 +42,8 @@ jobs:
           node --check tools/drive-content.js
           node --check tools/drive-calendar.js
 
+      - name: Google Drive Import als Vorschau
+        run: node tools/drive-content.js
+
       - name: Test abgeschlossen
         run: echo "STM Importer sind auf GitHub ausführbar."
