@@ -1,0 +1,35 @@
+name: STM Import Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v4
+
+      - name: Node.js bereitstellen
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Umgebung prüfen
+        run: |
+          node --version
+          npm --version
+          test -f tools/drive-content.js
+          test -f tools/drive-calendar.js
+
+      - name: Importer auf Syntax prüfen
+        run: |
+          node --check tools/drive-content.js
+          node --check tools/drive-calendar.js
+
+      - name: Test abgeschlossen
+        run: echo "STM Importer sind auf GitHub ausführbar."
