@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
       - name: Umgebung prüfen
         run: |
           node --version
