@@ -52,7 +52,7 @@ jobs:
           retention-days: 7
           
       - name: Importierte Inhalte veröffentlichen
-        if: ${{ inputs.publish && success() }}
+        if: ${{ inputs.publish && success() && github.ref == 'refs/heads/main' }}
         run: |
           git config user.name "STM Import Bot"
           git config user.email "stm-import-bot@users.noreply.github.com"
