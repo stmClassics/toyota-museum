@@ -22,6 +22,14 @@ jobs:
       - name: Abhängigkeiten installieren
         run: npm ci
 
+      - name: Google-Zugang bereitstellen
+        env:
+          GOOGLE_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          mkdir -p credentials
+          printf '%s' "$GOOGLE_KEY" > credentials/google-drive-service-account.json
+          node -e "JSON.parse(require('fs').readFileSync('credentials/google-drive-service-account.json', 'utf8')); console.log('Google-Schlüssel ist gültiges JSON.')"
+
       - name: Umgebung prüfen
         run: |
           node --version
