@@ -132,7 +132,13 @@ async function planSection(drive, rootChildren, cfg, problems) {
     try {
       const children = await list(drive, folder.id);
       const docs = children.filter(f => f.mimeType === DOC);
-      if (docs.length !== 1) throw new Error(`erwartet 1 Google Doc, gefunden ${docs.length}`);
+      if (docs.length === 0) {
+        console.warn(`  HINWEIS ${label}: noch kein Google Doc – übersprungen`);
+        continue;
+      }
+      if (docs.length > 1) {
+        throw new Error(`erwartet 1 Google Doc, gefunden ${docs.length}`);
+      }
       const doc = docs[0];
       const txtName = filename(doc);
       const images = children.filter(f => f.mimeType.startsWith('image/') && !isTemporaryFile(f.name))
