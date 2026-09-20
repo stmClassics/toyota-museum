@@ -1,2 +1,7 @@
+credentials/
+_drive-import/
+node_modules/
+
 # Local Netlify folder
 .netlify
+
