@@ -187,9 +187,16 @@ async function main() {
   const plans = sections.flatMap(s => s.plans);
   const allActions = plans.flatMap(p => p.actions);
   console.log(`\nGeprüft: ${plans.length} gültige Inhalte; ${allActions.filter(a => a.state === 'neu').length} neue, ${allActions.filter(a => a.state === 'ändern').length} geänderte, ${allActions.filter(a => a.state === 'gleich').length} unveränderte Dateien.`);
+  const changedContents = plans.filter(plan =>
+    plan.actions.some(action =>
+      action.state === 'neu' || action.state === 'ändern'
+    )
+  ).length;
+
   const result = {
     mode: apply ? 'import' : 'preview',
     validContents: plans.length,
+    changedContents,
     newFiles: allActions.filter(a => a.state === 'neu').length,
     changedFiles: allActions.filter(a => a.state === 'ändern').length,
     unchangedFiles: allActions.filter(a => a.state === 'gleich').length,
