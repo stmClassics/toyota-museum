@@ -1,6 +1,6 @@
 title: The Big C Picnic | Crown · Cressida · Corona · Carina
-start: 2027-08-23
-end: 2027-08-23
+start: 2026-08-23
+end: 2026-08-23
 location: Swiss Toyota Museum
 link:https://toyotamuseum.ch/insights.html?open=crown-picnic-2026
 summary: Classic Toyota Sedans & Wagons – Switzerland 2027
