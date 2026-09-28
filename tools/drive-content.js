@@ -187,6 +187,14 @@ async function main() {
   const plans = sections.flatMap(s => s.plans);
   const allActions = plans.flatMap(p => p.actions);
   console.log(`\nGeprüft: ${plans.length} gültige Inhalte; ${allActions.filter(a => a.state === 'neu').length} neue, ${allActions.filter(a => a.state === 'ändern').length} geänderte, ${allActions.filter(a => a.state === 'gleich').length} unveränderte Dateien.`);
+  const result = {
+    mode: apply ? 'import' : 'preview',
+    validContents: plans.length,
+    newFiles: allActions.filter(a => a.state === 'neu').length,
+    changedFiles: allActions.filter(a => a.state === 'ändern').length,
+    unchangedFiles: allActions.filter(a => a.state === 'gleich').length,
+    problems: []
+  };
   if (apply) {
     for (const section of sections) {
       const entries = [...section.index.entries];
@@ -214,6 +222,13 @@ async function main() {
   } else console.log('Vorschau beendet. Import mit --apply.');
   console.log(`\nIMPORTBERICHT: ${plans.length} gültige Inhalte, ${problems.length} Problem(e).`);
   for (const problem of problems) console.log(`  ! ${problem.label}: ${problem.message}`);
+  result.problems = problems;
+
+  await fs.writeFile(
+    path.join(ROOT, '_import-result.json'),
+    JSON.stringify(result, null, 2) + '\n',
+    'utf8'
+  );
   if (problems.length) process.exitCode = 2;
   if (apply) console.log('Import beendet. Alte Dateien und Index-Einträge wurden nicht gelöscht.');
 }

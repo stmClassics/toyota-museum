@@ -1,6 +1,7 @@
 credentials/
 _drive-import/
 node_modules/
+_import-result.json
 
 # Local Netlify folder
 .netlify
