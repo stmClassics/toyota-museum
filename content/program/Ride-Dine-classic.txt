@@ -3,6 +3,7 @@ start: 2027-04-01
 end: 2027-09-30
 location: Swiss Toyota Museum
 summary: Besichtigung des Toyota Museum mit Apero, Mittagessen und Führung.
+images: Besucher1.jpg, Besucher2.jpg, Besucher3.jpg
 pdf: ride-dine-classic.pdf
 ---
 Erlebe einen unvergesslichen Tag bei uns in Waltensburg im Toyota Museum. Es erwartet Euch ein Apero, ein feines Mittagessen und eine spannende Führung durch das Museum und durch unsere Lagerhalle.
