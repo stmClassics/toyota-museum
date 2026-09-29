@@ -10,7 +10,7 @@
   --overlay-maxw: 980px;
 
   /* Content width = Bild/Text-Spalte */
-  --overlay-contentw: 760px;
+  --overlay-contentw: 980px;
 }
 
 /* prevent background scroll */
