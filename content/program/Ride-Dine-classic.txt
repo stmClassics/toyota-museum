@@ -1,4 +1,4 @@
-title: Museumsbesichtigung mit Apero (Ride & Dine classic 2027)
+title: Museumsbesichtigung mit Apero
 start: 2027-04-01
 end: 2027-09-30
 location: Swiss Toyota Museum
