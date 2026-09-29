@@ -1,7 +1,7 @@
 title: Toyota Crown
 year: seit 1956
 summary: Eine der bedeutendsten Modellreihen und lange die Krönung der Palette. 
-images: crown/crownlager.jpg, crown/ms65-1.jpg, crown/ms65-2.jpg, crown/ms66.jpg, crown/ms67-1.jpg, crown/ms67-2.jpg, crown/ms67-3.jpg, crown/ms67.jpg, crown/ms112-0.jpg, crown/ms112-1.jpg, crown/ms112-2.jpg, crown/ms112.jpg, crown/stag.jpg
+images: crown/ms65_1.jpg, crown/ms65_2.jpg, crown/ms67_1.jpg, crown/ms67_2.jpg, crown/ms67_3.jpg, crown/ms112_0.jpg, crown/ms112_1.jpg, crown/ms112_2.jpg, crown/stag.jpg, crown/storage.jpg
 ---
 Seit 1955 gehört der Crown zu den bedeutendsten Modellreihen Toyotas. Er war das erste vollständig in Japan entwickelte und gebaute Personenfahrzeug des Unternehmens und entwickelte sich über viele Generationen von der robusten Reiselimousine zum luxuriösen Technologieträger. Crown ist die am längsten durchgehend verwendete Personenwagen-Modellbezeichnung in der Geschichte Toyotas.
 

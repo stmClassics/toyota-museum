@@ -1,8 +1,9 @@
-title: Ausflug mit Besichtigung des Toyota Museums (Dine & Ride 2027)
+title: Ausflug mit Besichtigung des Toyota Museums 
 start: 2027-05-01
 end: 2027-09-30
 location: Swiss Toyota Museum
 summary: Fahrt über die schönsten Strassen der Gegend zum Toyota Museum.
+images: Ausflug1.jpg, Ausflug2.jpg, Ausflug3.jpg
 pdf: dine-ride-programm.pdf
 ---
 Erlebe einen unvergesslichen Tag voller Automobilgeschichte, landschaftlicher Schönheit und einem Apero.  
