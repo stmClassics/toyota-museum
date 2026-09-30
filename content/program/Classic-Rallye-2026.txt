@@ -1,9 +1,0 @@
-title: 13. Toyota Classic Rallye
-start: 2026-09-04
-end: 2026-09-06
-location: Tba.
-summary: Die 2026er Classic Rallye führte uns auf kurvige Strassen jenseits der Alpen. 
-images: toyota-classic-rallye-2026-logo.png
-pdf: toyota-classic-rallye-2026.pdf
----
-In diesem Jahr führt die Rallye nicht in die Alpen sondern in den Schwarzwald wo uns auch wieder tolle Strecken, ein Stadtbesuch in Strassburg, ein Automuseum, kleinere Fahrchallange’s und am Sonntag ein JDM Japanclassic Treffen im Kemptthal begeistern werden.

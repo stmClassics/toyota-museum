@@ -2,10 +2,8 @@
   "imageBase": "content/program/images/",
   "pdfBase": "content/program/pdf/",
   "entries": [
-    "Ride-Dine-classic.txt",
     "Dinner-Ride.txt",
-    "Tag-der-offenen-Türe-2-2026.txt",
-    "Classic-Rallye-2026.txt",
-    "Crown-Picnic-2027.txt"
+    "Crown-Picnic-2027.txt",
+    "Ride-Dine-classic.txt"
   ]
 }
