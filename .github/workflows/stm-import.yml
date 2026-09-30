@@ -35,8 +35,16 @@ jobs:
           mkdir -p credentials
           printf '%s' "$GOOGLE_KEY" > credentials/google-drive-service-account.json
 
+      - name: Importer auf Syntax prüfen
+        run: |
+          node --check tools/drive-content.js
+          node --check tools/drive-calendar.js
+
       - name: Inhalte importieren
         run: node tools/drive-content.js --apply
+
+      - name: Kalender importieren
+        run: node tools/drive-calendar.js --apply
 
       - name: Änderungen anzeigen
         if: always()
